@@ -5,5 +5,5 @@ lazy val root = (project in file("."))
             name := "reactive-platform-tooling-docs",
          version := "",
     resolvers += Resolver.bintrayRepo("typesafe", "internal-maven-releases"),
-    paradoxTheme := Some("com.lightbend.paradox" % "paradox-theme-lightbend" % "0.2.3")
+    paradoxTheme := Some("com.lightbend.paradox" % "paradox-theme-lightbend" % "0.2.7")
   )
