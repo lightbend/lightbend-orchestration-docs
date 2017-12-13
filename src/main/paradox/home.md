@@ -1,14 +1,19 @@
-# Reactive Platform Tooling
+# Platform Tooling
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae turpis quis neque facilisis fringilla. Phasellus tempor sapien ac urna convallis, ac interdum augue porta. Donec interdum in mauris vitae dictum. Aenean sed metus a dolor hendrerit sodales non et quam. Morbi et laoreet massa. Morbi in sapien vel urna rutrum pulvinar et eu sapien. Sed tristique nisi cursus orci tincidunt blandit. Maecenas maximus velit orci, non commodo neque finibus eget.
-
-Table of Contents widget is useful for navigation interstitials:
+Lightbend's Reactive Platform Tooling is a developer-centric suite of tools that help you deploy Reactive Platform applications to Kubernetes.
 
 @@toc { depth=2 }
 
 @@@ index
 
-* [Section One](section-one.md)
-* [Section Two](section-two.md)
+* [Overview](overview.md)
+* [Cluster Setup](cluster-setup.md)
+* [Project Setup](project-setup.md)
+* [Project Configuration](project-configuration.md)
+* [Building & Publishing](building.md)
+* [Deployment Setup](deployment-setup.md)
+* [Kubernetes Deployment](kubernetes-deployment.md)
+* [Features In-Depth](features.md)
+* [Examples](examples.md)
 
 @@@
