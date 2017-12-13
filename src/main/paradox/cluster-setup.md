@@ -1,0 +1,41 @@
+# Cluster Setup
+
+To begin, you'll first need to setup your Kubernetes cluster. Below, you’ll find information on how to do this on your own local cluster, Minikube, as well as IBM's Cloud offerings. If you have access to a different Kubernetes environment, ensure that you’ve setup `kubectl` and `docker` to point at your cluster and docker registry.
+
+---------------------------------
+
+### Minikube
+
+[Minikube](https://kubernetes.io/docs/getting-started-guides/minikube/) provides a way for you to run a local Kubernetes cluster for development purposes. The command below will reset your Minikube and ensure that `kubectl` and `docker` can communicate with it.
+
+#### Reset your Minikube (Optional)
+
+If you wish to start with a fresh Minikube, run the command below. This will remove your existing Minikube and all of its data.
+
+```bash
+minikube delete
+```
+
+#### Start Minikube
+
+```bash
+minikube start
+eval $(minikube docker-env)
+```
+
+### IBM Cloud
+
+[IBM Cloud](https://www.ibm.com/cloud/) offers Kubernetes clusters that can be used in production environments. To use your IBM Cloud cluster, follow the instructions on their website. You'll need to setup both the [Container Service](https://www.ibm.com/cloud/container-service) and the [Container Registry](https://www.ibm.com/cloud/container-registry). The IBM Cloud console will guide you through creating a cluster, installing the `bx` tool, and using that to configure `kubectl`.
+
+### IBM Cloud Private
+
+[IBM Cloud Private](https://www.ibm.com/cloud-computing/products/ibm-cloud-private/) is an on-prem deployment of IBM Cloud. To deploy to your IBM Cloud Private cluster, you’ll need a working deployment of IBM Cloud Private and access to a Docker Registry.
+
+---------------------------------
+
+Once you’ve configured your Kubernetes environment, you should be able to verify access with the following command:
+
+```bash
+kubectl get nodes
+```
+
