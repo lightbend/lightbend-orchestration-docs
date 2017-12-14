@@ -105,10 +105,12 @@ rp generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.1.0"
 
 ### jq
 
-`rp` is intentionally limited in scope for the types of resources and different fields it generates. If you wish to arbitrarily modify its output, you can leverage its [jq](https://stedolan.github.io/jq/) support . This allows you to dynamically transform the output and add or change fields. For instance, the following command adds an annotation to the `Service` resource and a volume to the Pod Controller:
+`rp` is intentionally limited in scope for the types of resources and different fields it generates. If you wish to arbitrarily modify its output, you can leverage its [jq](https://stedolan.github.io/jq/) support . This allows you to dynamically transform the output and add or change fields. For instance, the following command adds another label to the  `Service` resource:
 
 ```bash
-
+rp generate-kubernetes-deployment lagom-java-chirper-tooling-example/front-end:1.0.0-SNAPSHOT \
+  --generate-services \
+  --transform-services '.metadata.labels.appCollection = "chirper"'
 ``` 
 
 > You must have `jq` installed and available on the path for this feature to work. You can use `rp version` to verify if `jq` support is available. 
