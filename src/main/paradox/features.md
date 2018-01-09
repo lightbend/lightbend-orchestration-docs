@@ -43,9 +43,9 @@ endpoints += HttpEndpoint(
     paths = Vector.empty))
 ```
 
-For Play applications, an endpoint is automatically added for Play's HTTP server.
+For Play applications, an endpoint, `http`, is automatically added for Play's HTTP server.
 
-For Lagom applications, an endpoint, `lagom-http-api` is automatically declared for each microservice with the appropriate ingress settings. The service locator offers tight integration with it, allowing you to find other services by simply looking up their service name.
+For Lagom applications, an endpoint, `http` is automatically declared for each microservice with the appropriate ingress settings. The service locator offers tight integration with it, allowing you to find other services by simply looking up their service name.
 
 #### Kubernetes
 
@@ -100,4 +100,4 @@ val service: Future[Option[Service]] =
   ServiceLocator.lookupOne(name = "my-service", endpoint = "http")
 ```
 
-Additionally, for Lagom applications, a service locator implementation is provided. It will attempt to find other services with the endpoint name `lagom-http-api` and `lagom-api` by default (following the conventions noted under *Endpoint Detection & Declaration*).
+Additionally, for Lagom applications, a service locator implementation is provided. It will attempt to find other services with the endpoint name `http` by default (following the conventions noted under *Endpoint Detection & Declaration*).
