@@ -2,21 +2,34 @@
 
 ## Akka Cluster Formation
 
-When enabled, this feature will use service discovery to identify other contact points. Once the requisite number of contact points have been identified, the one with the lowest address will form the cluster. The other nodes will then join that one.
+When enabled, this feature will use service discovery to identify other contact points. Once the requisite number of
+contact points have been identified, the one with the lowest address will form the cluster. The other nodes will then join that one.
 
 This feature is automatically enabled for Lagom applications that require it. It can be manually enabled with the following build configuration:
 
 ```sbt
-enableAkkaClusterBootstrap := Some(true)
-
-enableServiceDiscovery := true
+enableAkkaClusterBootstrap := true
 ```
 
-Additionally, when you generate resources for deployment, you'll need to specify a replica count greater than 2. A value of 3 or 5 is recommended. This is to reduce the risk of multiple islands of clusters being formed when first formed. For example, the following command specifies 5 replicas which are used as the contact points for forming the cluster:
+When you generate resources for a deployment, you'll need to specify a replica count greater than 2. A value of 3 or
+5 is recommended. This is to reduce the risk of multiple islands of clusters being formed when first formed. For example,
+the following command specifies 5 replicas which are used as the contact points for forming the cluster:
 
 ```bash
 rp generate-kubernetes-deployment my-org/my=app:0.1.0 --pod-controller-replicas 5
 ```
+
+By default, the feature will be configured to communicate and join other applications with the same name. If you have two disparate applications
+that should join the same cluster, use the `akkaClusterBootstrapSystemName` setting. For example, all applications that specify the following
+will join the same cluster, even if they have different names:
+
+```sbt
+akkaClusterBootstrapSystemName := "my-actor-system"
+```
+
+When deploying applications that use Akka Cluster, you'll typically want them to join the same cluster. This is especially true if you
+use Akka Persistence features. Because of this, it is recommended that you avoid Blue/Green deployments and instead use 
+the Canary (default) or Rolling deployment types
  
 ## Docker & JVM Configuration
 
@@ -85,11 +98,15 @@ kubectl create secret generic my-secret --from-file=my-key=./path-to-my-secret-f
 
 Service location facilities are provided by the tooling. This allows you to seamlessly discover other services without having to worry about how that maps to DNS addresses or how to asynchronously perform DNS lookups. To find other services, you simply need to specify the service and endpoint names. If the services are in a different namespace, that can also be specified.
 
+#### Configuration
+
 This feature is automatically enabled for Lagom applications. It can be manually enabled with the following build configuration:
 
 ```sbt
 enableServiceDiscovery := true
 ```
+
+#### Usage
 
 Below, you'll find some example code that uses the service locator to find the `http` endpoint of `my-service`:
 
@@ -100,4 +117,64 @@ val service: Future[Option[Service]] =
   ServiceLocator.lookupOne(name = "my-service", endpoint = "http")
 ```
 
-Additionally, for Lagom applications, a service locator implementation is provided. It will attempt to find other services with the endpoint name `http` by default (following the conventions noted under *Endpoint Detection & Declaration*).
+For Lagom applications, a service locator implementation is provided. It will attempt to find other services with the endpoint name `http` by default (following the conventions noted under *Endpoint Detection & Declaration*).
+
+#### External Services
+
+If you have external services, you can use the `--external-service` argument when generating deployment resources. For example, the following command will specify that the service **cas_native** (Lagom's default Cassandra service name)
+should point to an external service address (`_cql._tcp.reactive-sandbox-cassandra.default.svc.cluster.local`):
+
+macOS / Linux
+:  ```bash
+    rp generate-kubernetes-deployment my-service-impl:1.0.0 \
+      --external-service cas_native=_cql._tcp.reactive-sandbox-cassandra.default.svc.cluster.local
+    ```
+
+Windows
+:   ```powershell
+    rp.exe generate-kubernetes-deployment my-service-impl:1.0.0 \
+      --external-service cas_native=_cql._tcp.reactive-sandbox-cassandra.default.svc.cluster.local
+    ```
+
+## Status
+
+A status facility is provided by the tooling. When enabled, an additional route is added to the Akka Management HTTP
+server and the appropriate health and readiness checks are defined. By default, this route responds to
+requests to `/platform-tooling/health` and `/platform-tooling/readiness`.
+
+#### Configuration
+
+This feature is automatically enabled for applications that use Akka Cluster. It can be manually enabled with the following build configuration:
+
+```sbt
+enableStatus := true
+```
+
+#### Extensions
+
+You can extend this facility by defining your own instances of `com.lightbend.rp.status.HealthCheck` and `com.lightbend.rp.status.ReadinessCheck`.
+The configuration below shows how you can define a health check that causes your application to become unhealthy after one hour has passed:
+
+```hocon
+# In application.conf -- if adding a readiness check,
+# add to the `readiness-checks` key instead.
+
+com.lightbend.platform-tooling.health-checks +=
+  "com.mycompany.MyAppHealthCheck"
+```
+
+```scala
+// In your applications' source code. If defining a readiness check,
+// extend `ReadinessCheck` with method `ready` instead
+
+class MyAppHealthCheck extends com.lightbend.rp.status.HealthCheck {
+  private val startTime = java.time.Instant.now().toEpochMilli
+  private val maxTime = startTime + (1000 * 60L * 60L)
+
+  def healthy(actorSystem: ExtendedActorSystem)
+             (implicit ec: ExecutionContext): Future[Boolean] =
+    Future.successful(startTime < maxTime)
+}
+```
+
+By default, a readiness check is provided for Akka Cluster applications that succeeds after the cluster has been formed.

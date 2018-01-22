@@ -11,10 +11,11 @@ Refer to the listing below to understand what functionality is provided automati
 ### Lagom
 
 * Akka Cluster Formation
-* Endpoint Detection
 * Docker & JVM Configuration
+* Endpoint Detection
 * Port Assignment & Binding
 * Service Locator
+* Status
 
 ### Play
 
