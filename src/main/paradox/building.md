@@ -12,7 +12,7 @@ To build your application locally, you'll need to run the following command from
 sbt> docker:publishLocal
 ```
 
-> Using [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube/)? Be sure to run `eval $(minikube docker-env)` prior to launching SBT. This will ensure that the images are built inside your Minikube cluster without having to use a registry. `docker images` from within the same shell can help you inspect the images you've built.
+> Using [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube/)? Be sure to run `eval $(minikube docker-env)` prior to launching SBT. This will ensure that the images are built inside your Minikube cluster without having to use a registry. `docker images` from within the same shell can help you inspect the images you've built. When you need your old environment, you can get it back with `eval $(minikube docker-env -u)`. 
 
 ### Publishing to a Docker Registry
 

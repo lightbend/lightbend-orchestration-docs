@@ -8,7 +8,7 @@ Once you've installed the deployment tool, `reactive-cli`, you can use the `rp` 
 * Applications built and published to a registry (production) or the local docker engine ([Minikube](https://kubernetes.io/docs/getting-started-guides/minikube/))
 * `kubectl` installed and configured to point to your registry
 
-> Using Minikube? Make sure you run `eval $(minikube docker-env)` before following the steps below.
+> Using Minikube? Make sure you run `eval $(minikube docker-env)` before following the steps below. When you need your old environment, you can get it back with `eval $(minikube docker-env -u)`. 
 
 ## Deployments
 
@@ -33,7 +33,7 @@ By combing this with `--deployment-type`, you can easily use these features to p
 
 #### Canary Deployments
 
-This is the default mode of deployment for `rp`. Under this mode, the new version will exist alongside the old one and requests will be load-balanced between the old instances and the new ones. You can adjust the ratio of traffic with the `--pod-deployment-replicas` option.
+[Canary](https://martinfowler.com/bliki/CanaryRelease.html) is the default mode of deployment for `rp`. Under this mode, the new version will exist alongside the old one and requests will be load-balanced between the old instances and the new ones. You can adjust the ratio of traffic with the `--pod-deployment-replicas` option.
 
 ```bash
 # Initial install of 2.0.0 with 10 replicas
@@ -58,7 +58,7 @@ rp generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.0.0"
 
 #### Blue/Green Deployments
 
-You can also use `rp` to help facilitate blue/green deployments. This is a multi-step process and for each execution of `rp`, you must provide the `--deployment-type blue-green` option. First, you will install the new version's Pod Controllers. Then, once satisfied, you'll simply update the `Service` and `Ingress` resources. You can then remove the old Pod Controllers. See below for an example:
+You can also use `rp` to help facilitate [blue/green](https://docs.cloudfoundry.org/devguide/deploy-apps/blue-green.html) deployments. This is a multi-step process and for each execution of `rp`, you must provide the `--deployment-type blue-green` option. First, you will install the new version's Pod Controllers. Then, once satisfied, you'll simply update the `Service` and `Ingress` resources. You can then remove the old Pod Controllers. See below for an example:
 
 ```bash
 # Initial install of 2.0.0
@@ -87,7 +87,7 @@ rp generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.0.0"
 
 #### Rolling Upgrades
 
-To use rolling upgrades with `rp`, provide the `--deployment-type rolling` option. You'll need to do this when you first install your application and when you upgrade it. With Rolling Deployments, `Service` and `Pod Controller` resources are simply named after the application. When you perform a second `rp generate-kubernetes-deployment`, `kubectl` will simply update the image and Kubernetes will perform the rolling upgrade for you. If you added any new endpoints to your application,  they'll be created as `Service` and `Ingress` (if applicable) resources as well.
+To use [rolling upgrades](https://kubernetes.io/docs/tutorials/kubernetes-basics/update-intro/) with `rp`, provide the `--deployment-type rolling` option. You'll need to do this when you first install your application and when you upgrade it. With Rolling Deployments, `Service` and `Pod Controller` resources are simply named after the application. When you perform a second `rp generate-kubernetes-deployment`, `kubectl` will simply update the image and Kubernetes will perform the rolling upgrade for you. If you added any new endpoints to your application,  they'll be created as `Service` and `Ingress` (if applicable) resources as well.
 
 ```bash
 # Initial install of 2.0.0

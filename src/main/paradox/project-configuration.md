@@ -35,7 +35,7 @@ Your application may require that you manually enable or disable the various set
 |--------------------------------------------------------------------------|-------------------------------------------------------|
 | appName                    <br/><br/> `Option[String]`                   | Specifies the service name. Defaults to the SBT project's name for regular projects. Defaults to the Lagom service name for Lagom projects |
 | enableAkkaClusterBootstrap <br/><br/> `Option[Boolean]`                  | Specifies whether Akka Cluster Bootstrapping should be enabled. When enabled, an Akka extension will be enabled that will automatically form your cluster using service discovery.  |
-| enableCommon               <br/><br/> `Boolean`                          | Specifies whether basic features like Platform detection should be enabled. This is |
+| enableCommon               <br/><br/> `Boolean`                          | Specifies whether basic features like Platform detection should be enabled |
 | enablePlayHttpBinding      <br/><br/> `Boolean`                          | Specifies whether automatic HTTP port binding for Play & Lagom should be enabled|
 | enableSecrets              <br/><br/> `Option[Boolean]`                  | Specifies whether secrets library should be enabled |
 | endpoints                  <br/><br/> `Seq[Endpoint]`                    | Declare the endpoints that should be made available for your service |
