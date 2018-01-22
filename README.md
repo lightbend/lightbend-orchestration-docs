@@ -1,7 +1,10 @@
-# reactive-platform-tooling-docs
-techhub docs site for tooling
+# Platform Tooling Docs
 
-## build
+## Overview
+
+This project contains the documentation for Lightbend's Platform Tooling. This is a [Paradox](https://github.com/lightbend/paradox) project that will be published to [Lightbend Tech Hub](https://developer.lightbend.com/).
+
+## Build
 
 ```bash
 sbt paradox
@@ -14,13 +17,13 @@ $ sbt
 ~paradox
 ```
 
-## preview
+## Preview
 
 ```bash
 open target/paradox/site/home.html
 ```
 
-## 12 column grid
+## Reference
 
 The Lightbend style uses Zurb Foundation for layout.  The basic media query concepts are
 to support "small", "medium", "large" screens, and lay things out in a 12 column grid.
@@ -48,3 +51,11 @@ breakpoint.
 references:
 * https://foundation.zurb.com/sites/docs/media-queries.html
 * https://github.com/zurb/foundation-sites
+
+## Release
+
+Consult "Platform Tooling Release Process" on Google Drive
+
+## Maintenance
+
+Enterprise Suite Platform Team <es-platform@lightbend.com>
