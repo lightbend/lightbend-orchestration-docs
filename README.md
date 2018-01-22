@@ -1,7 +1,5 @@
 # Platform Tooling Docs
 
-## Overview
-
 This project contains the documentation for Lightbend's Platform Tooling. This is a [Paradox](https://github.com/lightbend/paradox) project that will be published to [Lightbend Tech Hub](https://developer.lightbend.com/).
 
 ## Build
