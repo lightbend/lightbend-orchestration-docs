@@ -54,3 +54,15 @@ Similarly, use `yum` to update your installation.
 ```bash
 sudo yum update reactive-cli
 ```
+
+## Linux (Other)
+
+Linux (generic `.tar.gz` file) packages are available on Lightbend's [Bintray Repository](https://bintray.com/lightbend/generic/reactive-cli).
+To install, download the latest version (Available under the *Files* tab for a given version), extract it, and ensure that `rp`
+is available on your `PATH`. 
+
+# Windows
+
+Windows packages are available on Lightbend's [Bintray Repository](https://bintray.com/lightbend/generic/reactive-cli). To install,
+download the latest version (Available under the *Files* tab for a given version), extract it, and ensure that `rp`
+is available on your `PATH`.

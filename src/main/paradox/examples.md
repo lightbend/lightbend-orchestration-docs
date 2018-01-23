@@ -18,4 +18,4 @@ We've prepared sample applications using the tooling to serve as a reference. Re
 
 ### Online Auction
 
-[Online Auction](https://github.com/longshorej/online-auction-scala-platform-tooling-example) is an implementation of an auction website using Lagom. It is comprised of 5 microservices and a front end. Third-party technology includes Kafka, Cassandra, Elasticsearch, and ZooKeeper (for Kafka).
+[Online Auction](https://github.com/longshorej/online-auction-scala-platform-tooling-example) is an implementation of an auction website using Lagom. It is comprised of 5 microservices and a front end. Third-party technology includes Kafka, Cassandra, Elasticsearch, and ZooKeeper (for Kafka). Be sure to consult its `DEPLOY.md` file for steps on how you can deploy it to Kubernetes.

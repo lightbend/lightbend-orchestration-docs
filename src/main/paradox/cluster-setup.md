@@ -18,9 +18,16 @@ minikube delete
 
 #### Start Minikube
 
-```bash
-minikube start
-eval $(minikube docker-env)
+macOS / Linux
+:  ```bash
+    minikube start
+    eval $(minikube docker-env)
+    ```
+
+Windows
+:  ```powershell
+    minikube start
+    minikube docker-env | Invoke-Expression
 ```
 
 ### IBM Cloud

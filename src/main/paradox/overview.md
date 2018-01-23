@@ -4,11 +4,10 @@ The Platform Tooling suite provides an easy way to create Docker images for Ligh
 
 ## Components
 
-The tooling suite consists of three main parts:
+The tooling suite consists of two main parts:
  
 * An SBT Plugin, [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app), which inspects your projects and builds annotated [Docker](https://www.docker.com/) Images.
 * A command-line tool, [reactive-cli](https://github.com/lightbend/reactive-cli), which generates resources for [Kubernetes](https://kubernetes.io/).
-* An application library, [reactive-lib](https://github.com/lightbend/reactive-lib/), which inspects its runtime environment to ensure that your application is configured correctly. It provides easy-to-use APIs for concepts such as service discovery, cluster formation, secrets access, and port binding. This library is automatically included in your project and configured by `sbt-reactive-app`.
 
 By using these tools, you can leverage the metadata that already exists in your project to easily deploy to Kubernetes without having to manually craft any JSON or YAML files.
 
@@ -33,6 +32,13 @@ A simple asynchronous secrets API is provided. Your application simply needs to 
 **Service Location**
 
 A Service Location facility is provided that understands the conventions produced by the tooling and uses them to locate other services. This means you can rely on service discovery to "just work."
+
+**Status**
+
+An application status (health and readiness) facility is provided. By default, applications that use Akka Cluster will not be indicated as "ready" until
+they have joined (or formed) a cluster. Wen combined with [Split Brain Resolver](https://developer.lightbend.com/docs/akka-commercial-addons/current/split-brain-resolver.html),
+ this gives you a very reliable mechanism for deploy Akka Cluster-based applications. These facilities are easily extensible by your application so that you can layer additional
+health and readiness checks on top of the provided ones.
 
 ## Supported Platforms
 
