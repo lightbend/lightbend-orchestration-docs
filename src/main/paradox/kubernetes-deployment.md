@@ -20,13 +20,13 @@ The command below will deploy version `1.0.0` of `activator-lagom-java-chirper/f
 
 macOS / Linux
 :   ```bash
-rp generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:1.0.0" \
+rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:1.0.0" \
   --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     ```
 
 Windows
 :   ```powershell
-rp.exe generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:1.0.0" \
+rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:1.0.0" \
   --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     ```
 
@@ -51,25 +51,25 @@ macOS / Linux
     #
     # Initial install of 2.0.0 with 10 replicas
     #
-    rp generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.0.0"  \
+    rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0"  \
     --pod-deployment-replicas 10 \
     --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Install 2.1.0 with 1 replica, thus ensuring a 10-1 ratio of traffic
     #
-    rp generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.1.0"  \
+    rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0"  \
     --pod-deployment-replicas 1 \
     --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Move 2.1.0 to 10 replicas (1-1 ratio)
     #
-    rp generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.1.0"  \
+    rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0"  \
     --pod-deployment-replicas 10 \
     --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Remove 2.0.0's Pod Controller
     #
-    rp generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.0.0"  \
+    rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0"  \
     --generate-pod-controllers | kubectl delete -f -
     ```
 
@@ -78,25 +78,25 @@ Windows
     #
     # Initial install of 2.0.0 with 10 replicas
     #
-    rp.exe generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.0.0"  \
+    rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0"  \
     --pod-deployment-replicas 10 \
     --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Install 2.1.0 with 1 replica, thus ensuring a 10-1 ratio of traffic
     #
-    rp.exe generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.1.0"  \
+    rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0"  \
     --pod-deployment-replicas 1 \
     --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Move 2.1.0 to 10 replicas (1-1 ratio)
     #
-    rp.exe generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.1.0"  \
+    rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0"  \
     --pod-deployment-replicas 10 \
     --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Remove 2.0.0's Pod Controller
     #
-    rp.exe generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.0.0"  \
+    rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0"  \
     --generate-pod-controllers | kubectl delete -f -
     ```
 
@@ -115,12 +115,12 @@ macOS / Linux
     #
     # Initial install of 2.0.0
     #
-    rp generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.0.0" \
+    rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0" \
       --deployment-type blue-green \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Install 2.1.0's Pod Controller (note --generate-pod-controllers)
-    rp generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.1.0" \
+    rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0" \
       --deployment-type blue-green --generate-pod-controllers \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
@@ -130,13 +130,13 @@ macOS / Linux
     #
     # Point traffic to 2.1.0 (note --generate-ingress --generate-services)
     #
-    rp generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.1.0" \
+    rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0" \
       --deployment-type blue-green --generate-ingress --generate-services \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Once you're ready, remove 2.0.0's Pod Controller (note --generate-pod-controllers)
     #
-    rp generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.0.0" \
+    rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0" \
       --deployment-type blue-green --generate-pod-controllers \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl delete -f -
     ```
@@ -146,13 +146,13 @@ Windows
     #
     # Initial install of 2.0.0
     #
-    rp.exe generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.0.0" \
+    rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0" \
       --deployment-type blue-green \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Install 2.1.0's Pod Controller (note --generate-pod-controllers)
     #
-    rp.exe generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.1.0" \
+    rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0" \
       --deployment-type blue-green --generate-pod-controllers \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
@@ -162,13 +162,13 @@ Windows
     #
     # Point traffic to 2.1.0 (note --generate-ingress --generate-services)
     #
-    rp.exe generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.1.0" \
+    rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0" \
       --deployment-type blue-green --generate-ingress --generate-services \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Once you're ready, remove 2.0.0's Pod Controller (note --generate-pod-controllers)
     #
-    rp.exe generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.0.0" \
+    rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0" \
       --deployment-type blue-green --generate-pod-controllers \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl delete -f -
     ```
@@ -178,7 +178,7 @@ Windows
 To use [rolling upgrades](https://kubernetes.io/docs/tutorials/kubernetes-basics/update-intro/) with `rp`, provide
 the `--deployment-type rolling` option. You'll need to do this when you first install your application and when you
 upgrade it. With Rolling Deployments, `Service` and `Pod Controller` resources are simply named after the application.
-When you perform a second `rp generate-kubernetes-deployment`, `kubectl` will simply update the image and Kubernetes
+When you perform a second `rp generate-kubernetes-resources`, `kubectl` will simply update the image and Kubernetes
 will perform the rolling upgrade for you. If you added any new endpoints to your application, they'll be created
 as `Service` and `Ingress` (if applicable) resources as well.
 
@@ -189,13 +189,13 @@ macOS / Linux
     #
     # Initial install of 2.0.0
     #
-    rp generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.0.0"  \
+    rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0"  \
       --pod-deployment-replicas 3 --deployment-type rolling \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Upgrade to 2.1.0
     #
-    rp generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.1.0"  \
+    rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0"  \
       --pod-deployment-replicas 3 --deployment-type rolling \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     ```
@@ -205,13 +205,13 @@ Windows
     #
     # Initial install of 2.0.0
     #
-    rp.exe generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.0.0"  \
+    rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0"  \
       --pod-deployment-replicas 3 --deployment-type rolling \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Upgrade to 2.1.0
     #
-    rp.exe generate-kubernetes-deployment "activator-lagom-java-chirper/front-end:2.1.0"  \
+    rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0"  \
       --pod-deployment-replicas 3 --deployment-type rolling \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     ```
@@ -227,14 +227,14 @@ Windows
 
 macOS / Linux
 :   ```bash
-    rp generate-kubernetes-deployment lagom-java-chirper-tooling-example/front-end:1.0.0-SNAPSHOT \
+    rp generate-kubernetes-resources lagom-java-chirper-tooling-example/front-end:1.0.0-SNAPSHOT \
       --generate-services \
       --transform-services '.metadata.labels.appCollection = "chirper"'
     ```
 
 Windows
 :   ```powershell
-    rp.exe generate-kubernetes-deployment lagom-java-chirper-tooling-example/front-end:1.0.0-SNAPSHOT \
+    rp.exe generate-kubernetes-resources lagom-java-chirper-tooling-example/front-end:1.0.0-SNAPSHOT \
       --generate-services \
       --transform-services '.metadata.labels.appCollection = "chirper"'
     ```
@@ -247,12 +247,12 @@ The following command will create the resources for the hello-world application,
 
 macOS / Linux
 :   ```bash
-    rp generate-kubernetes-deployment hello/world:1.0.0 --namespace hello | kubectl apply -f -
+    rp generate-kubernetes-resources hello/world:1.0.0 --namespace hello | kubectl apply -f -
     ```
 
 Windows
 :   ```powershell
-    rp.exe generate-kubernetes-deployment hello/world:1.0.0 --namespace hello | kubectl apply -f -
+    rp.exe generate-kubernetes-resources hello/world:1.0.0 --namespace hello | kubectl apply -f -
     ```
 
 To see the resources that were generated, use the following command:
