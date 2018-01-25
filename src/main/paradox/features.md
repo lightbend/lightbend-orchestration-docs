@@ -16,7 +16,7 @@ When you generate resources for a deployment, you'll need to specify a replica c
 the following command specifies 5 replicas which are used as the contact points for forming the cluster:
 
 ```bash
-rp generate-kubernetes-deployment my-org/my=app:0.1.0 --pod-controller-replicas 5
+rp generate-kubernetes-resources my-org/my=app:0.1.0 --pod-controller-replicas 5
 ```
 
 By default, the feature will be configured to communicate and join other applications with the same name. If you have two disparate applications
@@ -126,13 +126,13 @@ should point to an external service address (`_cql._tcp.reactive-sandbox-cassand
 
 macOS / Linux
 :  ```bash
-    rp generate-kubernetes-deployment my-service-impl:1.0.0 \
+    rp generate-kubernetes-resources my-service-impl:1.0.0 \
       --external-service cas_native=_cql._tcp.reactive-sandbox-cassandra.default.svc.cluster.local
     ```
 
 Windows
 :   ```powershell
-    rp.exe generate-kubernetes-deployment my-service-impl:1.0.0 \
+    rp.exe generate-kubernetes-resources my-service-impl:1.0.0 \
       --external-service cas_native=_cql._tcp.reactive-sandbox-cassandra.default.svc.cluster.local
     ```
 
