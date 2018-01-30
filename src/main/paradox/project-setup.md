@@ -16,7 +16,7 @@ To setup your project, include and enable the [sbt-reactive-app](https://github.
 1) Add the following to your project's `project/plugins.sbt` file to enable the plugin.
 
 ```scala
-addSbtPlugin("com.lightbend.rp" % "sbt-reactive-app" % "0.4.3")
+addSbtPlugin("com.lightbend.rp" % "sbt-reactive-app" % "0.5.1")
 ```
 
 2) Next, you'll need to enable it on each subprojects you wish to build images for. For instance, enabling it on the `front-end` project requires the following edit to `build.sbt`:
