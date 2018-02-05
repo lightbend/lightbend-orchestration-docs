@@ -16,7 +16,7 @@ When you generate resources for a deployment, you'll need to specify a replica c
 the following command specifies 5 replicas which are used as the contact points for forming the cluster:
 
 ```bash
-rp generate-kubernetes-resources my-org/my=app:0.1.0 --pod-controller-replicas 5
+rp generate-kubernetes-resources my-org/my-app:0.1.0 --pod-controller-replicas 5
 ```
 
 By default, the feature will be configured to communicate and join other applications with the same name. If you have two disparate applications
@@ -27,17 +27,79 @@ will join the same cluster, even if they have different names:
 akkaClusterBootstrapSystemName := "my-actor-system"
 ```
 
+You can use the `--join-existing-akka-cluster` flag to ensure that a new cluster will never be formed. This can be useful
+if you expect the cluster to never be fully down. It's also quite useful for launching one-off processes or jobs that
+are intended to join an already bootstrapped cluster.
+
+```bash
+rp generate-kubernetes-resources my-org/my-app:0.1.0 --join-existing-akka-cluster
+```
+
 When deploying applications that use Akka Cluster, you'll typically want them to join the same cluster. This is especially true if you
 use Akka Persistence features. Because of this, it is recommended that you avoid Blue/Green deployments and instead use 
 the Canary (default) or Rolling deployment types
+
+## Applications & Jobs
+
+You can declare additional *applications* inside your Docker image. An application is a name and a sequence of arguments
+that should be executed for the application. An operator can then generate alternative resources using `rp` by simply
+declaring the application name.
+
+This is complemented by the support for generating `Job` resources. For example, the following configuration would
+result in the main method defined by `App` being run by default. However, the operator can invoke `rp generate-kubernetes-resources --application my-job`
+to generate resources for the defined application instead.
+
+Given the following build configuration:
+
+```sbt
+mainClass in Compile := Some("com.example.App")
+
+applications += "my-job" -> Vector("bin/myjob")
+
+``` 
+
+And, given the following main classes:
+
+```scala
+package com.example
+
+object App {
+  def main(args: Array[String]): Unit = { ... }
+}
+
+object MyJob {
+  def main(args: Array[String]): Unit = { ... }
+}
+```
+
+An operator can generate resources for `App` by using the `--application` flag. Additionally, the `--pod-controller-type`
+flag is provided to allow a `Job` to be generated instead of a `Deployment`.
+
+```bash
+# Creates a Deployment that runs App
+rp generate-kubernetes-resources my-org/my-app:0.1.0
+
+# Creates a Job that runs MyJob
+rp generate-kubernetes-resources my-org/my-app:0.1.0 \
+  --application my-job \
+  --pod-controller-type job
+```
  
 ## Docker & JVM Configuration
 
 The Docker image is the deployment unit of choice and powers a wide variety of orchestration systems, including Kubernetes. The docker images created by the Platform Tooling offer the following default configuration:
 
-1) Minimal base-image, `openjdk:alpine`, to reduce the size of the images produced.
-2) Docker repository is set based on the project name. For example, given a Lagom root project `my-system` and a service `my-svc-impl`, the image's name will default to `my-system/my-svc-impl`.
-3) JVM's Docker CPU and memory limits are enabled, as discussed on this Oracle [Blog Post](https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits).
+1. Minimal base-image, `openjdk:alpine`, to reduce the size of the images produced.
+2. Docker repository is set based on the project name. For example, given a Lagom root project `my-system` and a service `my-svc-impl`, the image's name will default to `my-system/my-svc-impl`.
+3. JVM's Docker CPU and memory limits are enabled, as discussed on this Oracle [Blog Post](https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits).
+
+Additionally, a convenience setting is provided, `alpinePackages`, which can be used to specify additional Alpine packages that should
+be installed when building the Docker image. For example, the following build configuration ensures `core-utils` is
+added to the Docker image:
+
+```sbt
+alpinePackages += "coreutils"
+```
 
 ## Endpoint Detection & Declaration
 
@@ -98,15 +160,44 @@ kubectl create secret generic my-secret --from-file=my-key=./path-to-my-secret-f
 
 Service location facilities are provided by the tooling. This allows you to seamlessly discover other services without having to worry about how that maps to DNS addresses or how to asynchronously perform DNS lookups. To find other services, you simply need to specify the service and endpoint names. If the services are in a different namespace, that can also be specified.
 
-#### Configuration
+### Configuration
 
-This feature is automatically enabled for Lagom applications. It can be manually enabled with the following build configuration:
+This feature is automatically enabled for Lagom applications <sup>1</sup>.
+It can be manually enabled with the following build configuration:
 
 ```sbt
 enableServiceDiscovery := true
 ```
 
-#### Usage
+<sup>1</sup> Note that while it is enabled, your Lagom application still needs to be modified to bind the service locator. Use
+the configuration below to do that.
+
+#### Lagom Java
+
+Add the following configuration to your `application.conf` file to enable the Lagom Java Service Locator:
+
+```hocon
+play.modules.enabled += 
+  "com.lightbend.rp.servicediscovery.lagom.javadsl.ServiceLocatorModule"
+```
+
+#### Lagom Scala
+
+When declaring your Lagom application, for each service you will need to mix in the `com.lightbend.rp.servicediscovery.lagom.scaladsl.LagomServiceLocatorComponents` trait:
+
+```scala
+import com.lightbend.rp.servicediscovery.lagom.scaladsl.LagomServiceLocatorComponents
+
+...
+
+class LagomLoader extends LagomApplicationLoader {
+  override def load(context: LagomApplicationContext) = 
+    new MyLagomApplication(context) with LagomServiceLocatorComponents
+
+...
+```
+
+### Usage
 
 Below, you'll find some example code that uses the service locator to find the `http` endpoint of `my-service`:
 
