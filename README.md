@@ -18,7 +18,7 @@ $ sbt
 ## Preview
 
 ```bash
-open target/paradox/site/home.html
+open target/paradox/site/main/home.html
 ```
 
 ## Reference
