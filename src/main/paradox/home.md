@@ -14,5 +14,6 @@
 * [Kubernetes Deployment](kubernetes-deployment.md)
 * [Features In-Depth](features.md)
 * [Examples](examples.md)
+* [Release Notes](release-notes.md)
 
 @@@
