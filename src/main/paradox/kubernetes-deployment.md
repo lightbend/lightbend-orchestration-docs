@@ -44,7 +44,9 @@ By combing this with `--deployment-type`, you can easily use these features to p
 will exist alongside the old one and requests will be load-balanced between the old instances and the new ones. You can
 adjust the ratio of traffic with the `--pod-deployment-replicas` option.
 
-> By default, instances of a given application that use Akka Cluster will all join the same cluster (indicated by application name) under this mode.
+> By default, instances of a given application that use Akka Cluster will all join the same cluster (indicated by application name) 
+under this mode. If you use Akka Cluster, be sure to provide the `--akka-cluster-join-existing` flag if your services 
+have already been  deployed. This will guarantee the new pods will only join an already formed cluster.
 
 macOS / Linux
 :   ```bash
@@ -58,13 +60,13 @@ macOS / Linux
     # Install 2.1.0 with 1 replica, thus ensuring a 10-1 ratio of traffic
     #
     rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0"  \
-    --pod-deployment-replicas 1 \
+    --pod-deployment-replicas 1 --akka-cluster-join-existing \
     --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Move 2.1.0 to 10 replicas (1-1 ratio)
     #
     rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0"  \
-    --pod-deployment-replicas 10 \
+    --pod-deployment-replicas 10 --akka-cluster-join-existing \
     --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Remove 2.0.0's Pod Controller
@@ -116,11 +118,13 @@ macOS / Linux
     # Initial install of 2.0.0
     #
     rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0" \
+      --generate-all \
       --deployment-type blue-green \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Install 2.1.0's Pod Controller (note --generate-pod-controllers)
     rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0" \
+      --generate-all \
       --deployment-type blue-green --generate-pod-controllers \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
@@ -131,12 +135,14 @@ macOS / Linux
     # Point traffic to 2.1.0 (note --generate-ingress --generate-services)
     #
     rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0" \
+      --generate-all \
       --deployment-type blue-green --generate-ingress --generate-services \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Once you're ready, remove 2.0.0's Pod Controller (note --generate-pod-controllers)
     #
     rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0" \
+      --generate-all \
       --deployment-type blue-green --generate-pod-controllers \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl delete -f -
     ```
@@ -147,12 +153,14 @@ Windows
     # Initial install of 2.0.0
     #
     rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0" \
+      --generate-all \
       --deployment-type blue-green \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Install 2.1.0's Pod Controller (note --generate-pod-controllers)
     #
     rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0" \
+      --generate-all \
       --deployment-type blue-green --generate-pod-controllers \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
@@ -163,12 +171,14 @@ Windows
     # Point traffic to 2.1.0 (note --generate-ingress --generate-services)
     #
     rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0" \
+      --generate-all \
       --deployment-type blue-green --generate-ingress --generate-services \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Once you're ready, remove 2.0.0's Pod Controller (note --generate-pod-controllers)
     #
     rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0" \
+      --generate-all \
       --deployment-type blue-green --generate-pod-controllers \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl delete -f -
     ```
@@ -182,7 +192,9 @@ When you perform a second `rp generate-kubernetes-resources`, `kubectl` will sim
 will perform the rolling upgrade for you. If you added any new endpoints to your application, they'll be created
 as `Service` and `Ingress` (if applicable) resources as well.
 
-> By default, instances of a given application that use Akka Cluster will all join the same cluster (indicated by application name) under this deployment type.
+> By default, instances of a given application that use Akka Cluster will all join the same cluster (indicated by application name) under this deployment type. If
+you use Akka Cluster, be sure to provide the `--akka-cluster-join-existing` flag if your services have already been deployed. This will guarantee the new pods
+will only join an already formed cluster.
 
 macOS / Linux
 :   ```bash
@@ -190,13 +202,15 @@ macOS / Linux
     # Initial install of 2.0.0
     #
     rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0"  \
+      --generate-all \
       --pod-deployment-replicas 3 --deployment-type rolling \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Upgrade to 2.1.0
     #
     rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0"  \
-      --pod-deployment-replicas 3 --deployment-type rolling \
+      --generate-all \
+      --pod-deployment-replicas 3 --deployment-type rolling --akka-cluster-join-existing \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     ```
 
@@ -206,16 +220,31 @@ Windows
     # Initial install of 2.0.0
     #
     rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0"  \
+      --generate-all \
       --pod-deployment-replicas 3 --deployment-type rolling \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Upgrade to 2.1.0
     #
     rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0"  \
-      --pod-deployment-replicas 3 --deployment-type rolling \
+      --generate-all \
+      --pod-deployment-replicas 3 --deployment-type rolling --akka-cluster-join-existing \
       --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     ```
 
+## Multiple Images
+
+`rp generate-kubernetes-resources` can also be used to generate the resources for more than one image. This is useful
+in particular for `Ingress` resource generation, where many controllers do not allow multiple `Ingress` definitions
+for the same host. Refer to the [Examples](examples.md) page to see the syntax for this usage. [Chirper](https://github.com/longshorej/lagom-java-chirper-tooling-example)
+in particular makes use of this feature for generating its `Ingress` resource.
+
+## Best Practices
+
+`rp` attempts to be flexible and integrate well into your existing workflow. It's recommended that you create and 
+version control a script for invoking `rp` with its various options so that you can audit your changes.
+
+Some users may choose to take this a step further and version control the output of the tool as well.
 
 ## Additional Settings
 
@@ -228,6 +257,7 @@ Windows
 macOS / Linux
 :   ```bash
     rp generate-kubernetes-resources lagom-java-chirper-tooling-example/front-end:1.0.0-SNAPSHOT \
+      --generate-all \
       --generate-services \
       --transform-services '.metadata.labels.appCollection = "chirper"'
     ```
@@ -235,6 +265,7 @@ macOS / Linux
 Windows
 :   ```powershell
     rp.exe generate-kubernetes-resources lagom-java-chirper-tooling-example/front-end:1.0.0-SNAPSHOT \
+      --generate-all \
       --generate-services \
       --transform-services '.metadata.labels.appCollection = "chirper"'
     ```
@@ -247,12 +278,12 @@ The following command will create the resources for the hello-world application,
 
 macOS / Linux
 :   ```bash
-    rp generate-kubernetes-resources hello/world:1.0.0 --namespace hello | kubectl apply -f -
+    rp generate-kubernetes-resources hello/world:1.0.0 --generate-all --generate-namespaces --namespace hello | kubectl apply -f -
     ```
 
 Windows
 :   ```powershell
-    rp.exe generate-kubernetes-resources hello/world:1.0.0 --namespace hello | kubectl apply -f -
+    rp.exe generate-kubernetes-resources hello/world:1.0.0 --generate-all --generate-namespaces --namespace hello | kubectl apply -f -
     ```
 
 To see the resources that were generated, use the following command:
@@ -263,12 +294,19 @@ kubectl get all --namespace hello
 
 ### Private Docker Registry
 
-If your image is stored in a private registry, you'll need to create a credentials file in `~/.lightbend/docker.credentials` so that `rp` can access your image's manifest. For example, the file below configures credentials for the `my-docker-registry.bintray.io` registry.
+Docker images you build using sbt-reactive-app plugin will need to be accessed by the CLI. Depending on where you put them, CLI might need your authentication credentials to be able to access the registry. It will try to read credentials stored locally on your system by docker after you authenticate:
+
+```bash
+docker login my-docker-registry.bintray.io
+```
+When reading these credentials CLI might prompt to enter your user password, since the data is stored in a secure OS-specific enclave. If you don't want this, it is possible to explicitly provide your credentials by writing them down to `~/.lightbend/docker.credentials` (Linux, macOS) or `%HOMEPATH%\.lightbend\docker.credentials` (Windows) file:
 
 ```
 registry = my-docker-registry.bintray.io
-username = my-username
-password = my-password
-```
+username = foo
+password = bar
 
-Lastly, you'll need to ensure that your Kubernetes cluster has access to your registry. (todo: Help reader find the information on how to do this.) 
+registry = my-docker-registry2.bintray.io
+username = foo2
+password = bar2
+```
