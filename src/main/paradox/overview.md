@@ -36,7 +36,7 @@ A Service Location facility is provided that understands the conventions produce
 **Status**
 
 An application status (health and readiness) facility is provided. By default, applications that use Akka Cluster will not be indicated as "ready" until
-they have joined (or formed) a cluster. Wen combined with [Split Brain Resolver](https://developer.lightbend.com/docs/akka-commercial-addons/current/split-brain-resolver.html),
+they have joined (or formed) a cluster. When combined with [Split Brain Resolver](https://developer.lightbend.com/docs/akka-commercial-addons/current/split-brain-resolver.html),
  this gives you a very reliable mechanism for deploy Akka Cluster-based applications. These facilities are easily extensible by your application so that you can layer additional
 health and readiness checks on top of the provided ones.
 
