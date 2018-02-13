@@ -19,28 +19,45 @@ At this time, the following technologies are supported:
 * Lagom 1.4 or later
 * Play 2.6 or later
 
-### Plugin Usage
+## Example Project
 
-1) Add the following to your project's `project/plugins.sbt` file to enable the plugin.
+Before explaining configuration in detail, let's take a look at steps needed to use platform tooling with an existing project. We've provided an example Lagom application: [lagom-java-chirper-tooling-example](https://github.com/mitkus/lagom-java-chirper-tooling-example). It is a small Twitter clone utilising microservice architecture and event sourcing.
 
-```scala
-addSbtPlugin("com.lightbend.rp" % "sbt-reactive-app" % "0.5.1")
-```
-
-2) Next, you'll need to enable it on each subprojects you wish to build images for. For instance, enabling it on the `front-end` project requires the following edit to `build.sbt`:
+All that's needed to make it work with reactive tooling is to add `sbt-reactive-app` plugin by putting this in `project/plugins.sbt`:
 
 ```scala
-val frontEnd = project("front-end").enablePlugins(SbtReactiveAppPlugin)
+addSbtPlugin("com.lightbend.rp" % "sbt-reactive-app" % "0.6.0")
 ```
 
-> Using Lagom? You'll want to enable the plugin on each of your *impl* projects. Don't enable it for the *api* projects.
+Then, enable it on each subproject which will get packaged into a Docker image. When using Lagom those are service *impl* projects, also any frontends that you have. Don't enable it for the *api* projects, those only define service interfaces and do not produce any executables. In our case this done by adding `SbtReactiveAppPlugin` to the `enablePlugins()` call in `build.sbt` file. It should look like this:
 
-You'll also need to enable the Service Locator, which is covered in the [Required Manual Configuration](project-configuration.html#required-manual-configuration) section.
+```scala
+lazy val friendImpl = project("friend-impl")
+    .enablePlugins(LagomJava, SbtReactiveAppPlugin)
+...
+```
 
 > Refer to [Manual Configuration](project-configuration.html#manual-configuration) for other available settings.
 
-3) Finally, ensure that the plugin was enabled correctly:
+Besides `friend-impl` shown above, enable the plugin for `chirp-impl`, `activity-stream-impl`, `load-test-impl` and `front-end` projects. Now you're ready to check if plugin is set up correctly! Try running this in your terminal:
 
 ```bash
 sbt update
 ```
+
+If everything went well, now you can build Docker images and publish them to your local registry:
+
+```bash
+sbt docker:publishLocal
+docker images
+```
+
+Last command will show installed images, `friend-impl:1.0.0-SNAPSHOT` and others should be among them. Once you're here, you can generate Kuberenetes resources for deploying these images using [`reactive-cli`](kubernetes-deployment.html) tool. However, we can automate that to reduce your iteration times during development. Assuming you have [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube/) and `reactive-cli` installed, just run this:
+
+```bash
+minikube start --memory 6000
+sbt "deploy minikube"
+echo "http://$(minikube ip)"
+```
+
+Now you should be able to enter URL printed out by echo in your browser and try out Chirper application. Don't worry if that doesn't work yet, we'll explain how to setup `Minikube` and `reactive-cli` in other sections.
