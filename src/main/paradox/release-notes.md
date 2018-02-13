@@ -11,7 +11,7 @@ SBT setting.
 |-----------------------------------------------------------------------------|----------|
 | [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `0.9.0`  |
 | [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.5.0`  |
-| [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `0.6.0`  |
+| [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `0.6.1`  |
 
 ## reactive-cli
 
