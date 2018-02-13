@@ -1,7 +1,7 @@
 # Release Notes
 
-This page tracks the components of Platform Tooling. When using these projects, you should make sure they all have
-the same major version. Note that reactive-lib is automatically included by sbt-reactive-app, so you do not normally
+This page tracks the components of Reactive Platform Tooling. When using these projects, you should make sure they all have
+the same major version. Note that `reactive-lib` is automatically included by `sbt-reactive-app`, so you do not normally
 need to specify its version. However, a particular version can be used by explicitly setting the `reactiveLibVersion`
 SBT setting.
 
@@ -35,6 +35,10 @@ SBT setting.
 * Visibility of healthy/readiness methods changed to public for better integration into user's applications
 
 ## sbt-reactive-app
+
+### 0.6.1 - Tuesday, February 13, 2018
+
+* Fixed a bug causing the plugin to fail on Lagom projects using SBT 1.0 or later.
 
 ### 0.6.0 - Monday, February 12, 2018
 

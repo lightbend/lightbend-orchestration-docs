@@ -1,6 +1,6 @@
 # Installation
 
-To use the platform tooling, you'll need to install the [Reactive CLI](https://github.com/lightbend/reactive-cli). Refer to the instructions for your platform below.
+To use the Reactive Platform Tooling, you'll need to install the [Reactive CLI](https://github.com/lightbend/reactive-cli). Refer to the instructions for your platform below.
 
 ## Prerequisites
 
