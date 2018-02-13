@@ -87,7 +87,7 @@ rp generate-kubernetes-resources my-org/my-app:0.1.0 \
  
 ## Docker & JVM Configuration
 
-The Docker image is the deployment unit of choice and powers a wide variety of orchestration systems, including Kubernetes. The docker images created by the Platform Tooling offer the following default configuration:
+The Docker image is the deployment unit of choice and powers a wide variety of orchestration systems, including Kubernetes. The docker images created by the Reactive Platform Tooling offer the following default configuration:
 
 1. Minimal base-image, `openjdk:alpine`, to reduce the size of the images produced.
 2. Docker repository is set based on the project name. For example, given a Lagom root project `my-system` and a service `my-svc-impl`, the image's name will default to `my-system/my-svc-impl`.

@@ -1,4 +1,4 @@
-# Platform Tooling
+# Reactive Platform Tooling
 
 @@toc { depth=2 }
 
@@ -14,6 +14,7 @@
 * [Kubernetes Deployment](kubernetes-deployment.md)
 * [Features In-Depth](features.md)
 * [Examples](examples.md)
+* [Reactive Sandbox](reactive-sandbox.md)
 * [Release Notes](release-notes.md)
 
 @@@
