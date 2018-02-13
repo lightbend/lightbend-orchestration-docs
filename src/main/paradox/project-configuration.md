@@ -8,7 +8,7 @@ the sections below to understand what features are available, which are automati
 
 Refer to the listing below to understand what functionality is provided automatically by the plugin for your framework.
 
-> Refer to the *Manual Configuration* section below for information on how you can manually enable and disable these for all applications.
+> Refer to the *Additional Configuration* section below for information on how you can manually enable and disable these for all applications.
 
 ### Lagom
 
@@ -30,7 +30,7 @@ Refer to the listing below to understand what functionality is provided automati
 
 * Docker & JVM Configuration
 
-## Required Manual Configuration
+## Required Configuration
 
 ### Service Locator
 
@@ -63,7 +63,18 @@ class LagomLoader extends LagomApplicationLoader {
 ...
 ```
 
-## Additional Manual Configuration
+## Recommended Configuration
+
+### Split Brain Resolver
+
+If your application uses Akka Cluster (which includes most Lagom services), you'll need a solution to deal with downing of rescheduled cluster members
+as well as a strategy for dealing with network partitions. Lightbend provides a solution to its customers as part of
+the [Lightbend Reactive Platform](http://www.lightbend.com/products/lightbend-reactive-platform).  
+
+Be sure to consult the documentation on [Split Brain Resolver](https://developer.lightbend.com/docs/akka-commercial-addons/current/split-brain-resolver.html)
+to learn how to configure your application to use it.
+
+## Additional Configuration
 
 Your application may require that you manually enable or disable the various settings provided by `sbt-reactive-app`. Refer to the table below to understand what settings are available.
 
