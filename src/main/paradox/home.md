@@ -1,7 +1,5 @@
 # Platform Tooling
 
-Lightbend's Reactive Platform Tooling is a developer-centric suite of tools that help you deploy Reactive Platform applications to Kubernetes.
-
 @@toc { depth=2 }
 
 @@@ index
@@ -11,9 +9,11 @@ Lightbend's Reactive Platform Tooling is a developer-centric suite of tools that
 * [Project Setup](project-setup.md)
 * [Project Configuration](project-configuration.md)
 * [Building & Publishing](building.md)
-* [Deployment Setup](deployment-setup.md)
+* [CLI Installation](cli-installation.md)
+* [Kubernetes Development](kubernetes-development.md)
 * [Kubernetes Deployment](kubernetes-deployment.md)
 * [Features In-Depth](features.md)
 * [Examples](examples.md)
+* [Release Notes](release-notes.md)
 
 @@@
