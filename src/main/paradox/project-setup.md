@@ -21,15 +21,15 @@ At this time, the following technologies are supported:
 
 ## Example Project
 
-Before explaining configuration in detail, let's take a look at steps needed to use platform tooling with an existing project. We've provided an example Lagom application: [lagom-java-chirper-tooling-example](https://github.com/mitkus/lagom-java-chirper-tooling-example). It is a small Twitter clone utilising microservice architecture and event sourcing.
+Before explaining the configuration in detail, let's take a look at steps needed to use platform tooling with an existing project. We've provided an example Lagom application: [lagom-java-chirper-tooling-example](https://github.com/mitkus/lagom-java-chirper-tooling-example). It is a small Twitter clone utilising microservice architecture and event sourcing.
 
-All that's needed to make it work with reactive tooling is to add `sbt-reactive-app` plugin by putting this in `project/plugins.sbt`:
+All that's needed to make it work with Reactive Platform Tooling is to add `sbt-reactive-app` plugin by putting this in `project/plugins.sbt`:
 
 ```scala
 addSbtPlugin("com.lightbend.rp" % "sbt-reactive-app" % "0.6.0")
 ```
 
-Then, enable it on each subproject which will get packaged into a Docker image. When using Lagom those are service *impl* projects, also any frontends that you have. Don't enable it for the *api* projects, those only define service interfaces and do not produce any executables. In our case this done by adding `SbtReactiveAppPlugin` to the `enablePlugins()` call in `build.sbt` file. It should look like this:
+Then, enable it on each subproject which will get packaged into a Docker image. When using Lagom those are service *impl* projects, also any frontends that you have. Don't enable it for the *api* projects, those only define service interfaces and do not produce any executables. In our case this can be done by adding `SbtReactiveAppPlugin` to the `enablePlugins()` call in `build.sbt` file. It should look like this:
 
 ```scala
 lazy val friendImpl = project("friend-impl")
