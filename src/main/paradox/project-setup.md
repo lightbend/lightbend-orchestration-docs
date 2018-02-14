@@ -39,7 +39,15 @@ lazy val friendImpl = project("friend-impl")
 
 > Refer to [Manual Configuration](project-configuration.html#manual-configuration) for other available settings.
 
-Besides `friend-impl` shown above, enable the plugin for `chirp-impl`, `activity-stream-impl`, `load-test-impl` and `front-end` projects. Now you're ready to check if plugin is set up correctly! Try running this in your terminal:
+Besides `friend-impl` shown above, enable the plugin for `chirp-impl`, `activity-stream-impl`, `load-test-impl` and `front-end` projects.
+
+Next step is neccessary for Lagom Java services to find each other when running on Kubernetes. We need to enable service locator module by adding a line to `friend-impl/src/main/resources/application.conf`:
+
+```hocon
+play.modules.enabled += "com.lightbend.rp.servicediscovery.lagom.javadsl.ServiceLocatorModule"
+```
+
+Again, we need to repeat it for all service subprojects, so make sure to also add this line to `application.conf` files in `chirp-impl`, `activity-stream-impl`, `load-test-impl` and `front-end`. Now you're ready to check if plugin is set up correctly! Try running this in your terminal:
 
 ```bash
 sbt update
