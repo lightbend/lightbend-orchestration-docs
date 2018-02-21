@@ -1,6 +1,6 @@
 # Examples
 
-We've prepared sample applications using the tooling to serve as a reference. Refer to the list below for more details.
+We've prepared sample applications using Lightbend Orchestration for Kubernetes to serve as a reference. Refer to the list below for more details.
 
 ### Hello World
 
