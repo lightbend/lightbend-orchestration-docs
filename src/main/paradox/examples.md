@@ -14,7 +14,7 @@ We've prepared sample applications using the tooling to serve as a reference. Re
 
 ### Akka Cluster Tooling Example
 
-[Akka Cluster Tooling Example](https://github.com/longshorej/akka-cluster-tooling-example) is a bare-bones Akka Cluster and HTTP application that illustrates the steps involved to take advantage of the Reactive Platform Tooling.
+[Akka Cluster Tooling Example](https://github.com/longshorej/akka-cluster-tooling-example) is a bare-bones Akka Cluster and HTTP application that illustrates the steps involved to take advantage of Lightbend Orchestration for Kubernetes.
 
 ### Online Auction
 

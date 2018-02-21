@@ -1,6 +1,6 @@
 # Release Notes
 
-This page tracks the components of Reactive Platform Tooling. When using these projects, you should make sure they all have
+This page tracks the components of Lightbend Orchestration for Kubernetes. When using these projects, you should make sure they all have
 the same major version. Note that `reactive-lib` is automatically included by `sbt-reactive-app`, so you do not normally
 need to specify its version. However, a particular version can be used by explicitly setting the `reactiveLibVersion`
 SBT setting.

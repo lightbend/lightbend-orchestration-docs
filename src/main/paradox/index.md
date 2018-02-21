@@ -1,4 +1,4 @@
-# Reactive Platform Tooling
+# Lightbend Orchestration for Kubernetes
 
 @@toc { depth=2 }
 
