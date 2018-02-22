@@ -19,17 +19,21 @@ At this time, the following technologies are supported:
 * Lagom 1.4 or later
 * Play 2.6 or later
 
-## Example Project
+### Example Project
 
-Before explaining the configuration in detail, let's take a look at steps needed to use platform tooling with an existing project. We've provided an example Lagom application: [lagom-java-chirper-tooling-example](https://github.com/mitkus/lagom-java-chirper-tooling-example). It is a small Twitter clone utilising microservice architecture and event sourcing.
+Before explaining the configuration in detail, let's take a look at steps needed to use platform tooling with an existing project. We've provided an example Lagom application: [lagom-java-chirper-tooling-example](https://github.com/mitkus/lagom-java-chirper-tooling-example). Its a small Twitter clone utilising a microservices architecture and event sourcing.
 
-All that's needed to make it work with Reactive Platform Tooling is to add `sbt-reactive-app` plugin by putting this in `project/plugins.sbt`:
+#### Setup
+
+To use it with Lightbend Orchestration for Kubernetes, follow these steps:
+
+1) Add the plugin to your project's `project/plugins.sbt` file:
 
 ```scala
-addSbtPlugin("com.lightbend.rp" % "sbt-reactive-app" % "0.6.0")
+addSbtPlugin("com.lightbend.rp" % "sbt-reactive-app" % "0.6.1")
 ```
 
-Then, enable it on each subproject which will get packaged into a Docker image. When using Lagom those are service *impl* projects, also any frontends that you have. Don't enable it for the *api* projects, those only define service interfaces and do not produce any executables. In our case this can be done by adding `SbtReactiveAppPlugin` to the `enablePlugins()` call in `build.sbt` file. It should look like this:
+2) Enable it for each subproject which will get packaged into a Docker image. When using Lagom those are service *impl* projects, as well as any frontends that you have. Don't enable it for the *api* projects, those only define service interfaces and do not produce any executables. In our case this can be done by adding `SbtReactiveAppPlugin` to the `enablePlugins()` call in `build.sbt` file. It should look like this:
 
 ```scala
 lazy val friendImpl = project("friend-impl")
@@ -41,7 +45,7 @@ lazy val friendImpl = project("friend-impl")
 
 Besides `friend-impl` shown above, enable the plugin for `chirp-impl`, `activity-stream-impl`, `load-test-impl` and `front-end` projects.
 
-Next step is neccessary for Lagom Java services to find each other when running on Kubernetes. We need to enable service locator module by adding a line to `friend-impl/src/main/resources/application.conf`:
+3) Enable the service locator module by adding a line to `friend-impl/src/main/resources/application.conf`:
 
 ```hocon
 play.modules.enabled += "com.lightbend.rp.servicediscovery.lagom.javadsl.ServiceLocatorModule"
@@ -53,6 +57,9 @@ Again, we need to repeat it for all service subprojects, so make sure to also ad
 sbt update
 ```
 
+#### Developer Deployment
+
+Now that your project is setup, you can use SBT to build Docker images and publish them to your local registry:
 If everything went well, now you can build Docker images and publish them to your local registry:
 
 ```bash
@@ -60,7 +67,19 @@ sbt docker:publishLocal
 docker images
 ```
 
-Last command will show installed images, `friend-impl:1.0.0-SNAPSHOT` and others should be among them. Once you're here, you can generate Kuberenetes resources for deploying these images using [`reactive-cli`](kubernetes-deployment.html) tool. However, we can automate that to reduce your iteration times during development. Assuming you have [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube/) and `reactive-cli` installed, just run this:
+##### Setup
+
+Later in the documentation we'll cover how you can generate YML for each of your services, but for now let's test out
+the developer features. The following command will build and deploy all of your services into your local Kubernetes
+cluster. You'll need to ensure that the following software is installed:
+
+* [Docker](https://www.docker.com/)
+* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl)
+* [Minikube](https://github.com/kubernetes/minikube) v0.25.0 or later (Verify with `minikube version`)
+* [Helm](https://github.com/kubernetes/helm)
+* [reactive-cli](https://developer.lightbend.com/docs/reactive-platform-tooling/latest/cli-installation.html#install-the-cli) 0.9.0 or later (Verify with `rp version`)
+
+After installing the requisite software, run the following commands:
 
 ```bash
 minikube start --memory 6000
@@ -68,4 +87,6 @@ sbt "deploy minikube"
 echo "http://$(minikube ip)"
 ```
 
-Now you should be able to enter URL printed out by echo in your browser and try out Chirper application. Don't worry if that doesn't work yet, we'll explain how to setup `Minikube` and `reactive-cli` in other sections.
+Now you should be able to open the URL in your browser and try out the Chirper application. Later in the
+documentation we'll cover how you can use these same tools in a production setting.
+

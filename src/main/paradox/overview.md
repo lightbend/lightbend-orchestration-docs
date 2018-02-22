@@ -1,6 +1,6 @@
 # Overview
 
-Lightbend's Reactive Platform Tooling is a developer-centric suite of tools that helps you deploy 
+Lightbend Orchestration for Kubernetes is a developer-centric suite of tools that helps you deploy 
 [Reactive Platform](https://www.lightbend.com/products/reactive-platform) applications to Kubernetes. It provides an
  easy way to create Docker images for your applications and introduces an automated process for generating
  Kubernetes resource files for you from those images. This process helps reduce the friction between 
