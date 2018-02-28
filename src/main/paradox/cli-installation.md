@@ -71,6 +71,17 @@ To verify your installation:
 rp version
 ```
 
+## Linux (Other)
+
+Linux (generic `.tar.gz` file) packages are available on Lightbend's [Bintray Repository](https://bintray.com/lightbend/generic/reactive-cli).
+To install, download the latest version (Available under the *Files* tab for a given version), extract it, and ensure that `rp` is available on your `PATH`. 
+
+## Windows
+
+Windows packages are available on Lightbend's [Bintray Repository](https://bintray.com/lightbend/generic/reactive-cli). To install,
+download the latest version (Available under the *Files* tab for a given version), extract it, and ensure that `rp`
+is available on your `PATH`.
+
 ## Private Docker Registries
 
 Docker images you build using sbt-reactive-app plugin will need to be accessed by the CLI. Depending on where you put them, CLI might need your authentication credentials to be able to access the registry. It will try to read credentials stored locally on your system by docker after you authenticate:
