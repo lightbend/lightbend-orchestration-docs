@@ -71,12 +71,12 @@ To verify your installation:
 rp version
 ```
 
-## Linux (Other)
+### Linux (Other)
 
 Linux (generic `.tar.gz` file) packages are available on Lightbend's [Bintray Repository](https://bintray.com/lightbend/generic/reactive-cli).
 To install, download the latest version (Available under the *Files* tab for a given version), extract it, and ensure that `rp` is available on your `PATH`. 
 
-## Windows
+### Windows
 
 Windows packages are available on Lightbend's [Bintray Repository](https://bintray.com/lightbend/generic/reactive-cli). To install,
 download the latest version (Available under the *Files* tab for a given version), extract it, and ensure that `rp`
