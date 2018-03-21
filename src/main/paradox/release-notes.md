@@ -10,7 +10,7 @@ SBT setting.
 | Project                                                                     |  Version |
 |-----------------------------------------------------------------------------|----------|
 | [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `0.9.0`  |
-| [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.5.0`  |
+| [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.6.0`  |
 | [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `0.6.1`  |
 
 ## reactive-cli
@@ -28,6 +28,11 @@ SBT setting.
 * Added feature to allow resources to be generated from multiple images in one invocation. `Ingress` resources in particular are now merged by host if more than one is generated.
 
 ## reactive-lib
+
+### 0.6.0 - Wednesday, March 21, 2018
+
+* Add support for Mesos to service locator
+* Fix a service locator bug causing min ttl to be equal to max ttl
 
 ### 0.5.0 - Monday, February 12, 2018
 
