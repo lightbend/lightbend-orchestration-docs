@@ -8,9 +8,7 @@ We've prepared sample applications using Lightbend Orchestration for Kubernetes 
 
 ### Chirper
 
-[Chirper](https://github.com/longshorej/lagom-java-chirper-tooling-example) is a Twitter-clone built using the [Lagom](https://www.lagomframework.com/) framework. Consult its `README.md` for information on how it can be deployed to Kubernetes.
-
-> Note: This is a fork that has had all deployment-related resources (and the Maven build) removed to make it as easy as possible to understand the process.
+[Chirper](https://github.com/lagom/lagom-java-sbt-chirper-example/) is a Twitter-clone built using the [Lagom](https://www.lagomframework.com/) framework. Consult its `README.md` for information on how it can be deployed to Kubernetes.
 
 ### Akka Cluster Tooling Example
 
