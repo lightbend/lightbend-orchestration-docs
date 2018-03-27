@@ -1,7 +1,6 @@
 # Release Notes
 
-This page tracks the components of Lightbend Orchestration for Kubernetes. When using these projects, you should make sure they all have
-the same major version. Note that `reactive-lib` is automatically included by `sbt-reactive-app`, so you do not normally
+This page tracks the components of Lightbend Orchestration for Kubernetes. Note that `reactive-lib` is automatically included by `sbt-reactive-app`, so you do not normally
 need to specify its version. However, a particular version can be used by explicitly setting the `reactiveLibVersion`
 SBT setting.
 
@@ -9,11 +8,21 @@ SBT setting.
 
 | Project                                                                     |  Version |
 |-----------------------------------------------------------------------------|----------|
-| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `0.9.0`  |
+| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.0.0`  |
 | [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.7.0`  |
 | [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `0.6.1`  |
 
 ## reactive-cli
+
+### 1.0.0 - Tuesday, March 27, 2018
+
+* Fix formatting of Kubernetes default API versions
+* Fix error messages for when multiple docker images are not found
+* Fix a bug causing `docker login` credentials to be ignored in certain circumstances
+* Now supports specifying Docker digest syntax (i.e. `my-project-impl@<somehash>`)
+* `RP_NAMESPACE` now sourced via Kubernetes ref spec
+* Fix bug with YAML renderer and strings "true" "false" "null"
+* Instances that specify `--akka-cluster-join-existing` will no longer be discoverable for bootstrap
 
 ### 0.9.0 - Monday, February 12, 2018
 
