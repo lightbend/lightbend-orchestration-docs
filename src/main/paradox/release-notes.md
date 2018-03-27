@@ -10,7 +10,7 @@ SBT setting.
 | Project                                                                     |  Version |
 |-----------------------------------------------------------------------------|----------|
 | [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `0.9.0`  |
-| [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.6.0`  |
+| [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.7.0`  |
 | [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `0.6.1`  |
 
 ## reactive-cli
@@ -28,6 +28,12 @@ SBT setting.
 * Added feature to allow resources to be generated from multiple images in one invocation. `Ingress` resources in particular are now merged by host if more than one is generated.
 
 ## reactive-lib
+
+### 0.7.0 - Tuesday, March 27, 2018
+
+* Add retry mechanism to service locator
+* Increase default timeouts for service locator
+* Fix configuration of akka management, allowing cluster bootstrap to work with NAT/bridged networking, in particular on DC/OS
 
 ### 0.6.0 - Wednesday, March 21, 2018
 
