@@ -10,7 +10,7 @@ SBT setting.
 |-----------------------------------------------------------------------------|----------|
 | [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.0.0`  |
 | [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.7.0`  |
-| [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `0.6.1`  |
+| [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `1.1.0`  |
 
 ## reactive-cli
 
@@ -55,6 +55,19 @@ SBT setting.
 * Visibility of healthy/readiness methods changed to public for better integration into user's applications
 
 ## sbt-reactive-app
+
+### 1.1.0 - Tuesday, March 27, 2017
+
+* Upgraded automatic inclusion of reactive-lib to `0.7.0`.
+* Internal changes to support DC/OS
+
+### 1.0.0 - Monday, March 26, 2018
+
+* Upgraded automatic inclusion of reactive-lib to `0.6.0`.
+* 'deploy minikube' now validates that ingress addon has been enabled
+* One `LABEL` directive is now used, speeding up build times
+* Internal changes to support dynamic environments
+* `LABEL` order is now preserved
 
 ### 0.6.1 - Tuesday, February 13, 2018
 
