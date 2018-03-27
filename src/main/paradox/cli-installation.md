@@ -79,8 +79,25 @@ To install, download the latest version (Available under the *Files* tab for a g
 ### Windows
 
 Windows packages are available on Lightbend's [Bintray Repository](https://bintray.com/lightbend/generic/reactive-cli). To install,
-download the latest version (Available under the *Files* tab for a given version), extract it, and ensure that `rp`
-is available on your `PATH`.
+download the latest version (Available under the *Files* tab for a given version) and extract it.
+
+Ensure that `rp.exe` is on your PATH. A quick way to do this from PowerShell is to `cd` where `rp.exe` is located and run this:
+
+```powershell
+$env:Path += ";" + $pwd.Path
+If (-not (Test-Path $Profile)) {New-Item $profile -itemtype file}
+Write-Output ('$env:Path += ";" + ''' + $pwd.Path + "'") | Out-File $profile -Append
+```
+
+#### Removing the rp PowerShell Alias
+
+Within PowerShell, you must invoke `rp.exe` since `rp` refers to an alias. If you prefer, you may remove that alias from the current and subsequent shells:
+
+```powershell
+Remove-Item alias:\rp -Force
+If (-not (Test-Path $Profile)) {New-Item $profile -itemtype file}
+echo "Remove-Item alias:\rp -Force" | Out-File $profile -Append
+```
 
 ## Private Docker Registries
 
