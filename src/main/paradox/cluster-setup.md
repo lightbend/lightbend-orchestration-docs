@@ -1,8 +1,8 @@
 # Cluster Setup
 
-To begin, you'll first need to setup your Kubernetes cluster. Below, you’ll find information on how to do this on your own local cluster, Minikube, as well as IBM's Cloud offerings. If you have access to a different Kubernetes environment, ensure that you’ve setup `kubectl` and `docker` to point at your cluster and docker registry.
+## Kubernetes
 
----------------------------------
+When deploying to Kubernetes, you'll first need to setup your Kubernetes cluster. Below, you’ll find information on how to do this on your own local cluster, Minikube, as well as IBM's Cloud offerings. If you have access to a different Kubernetes environment, ensure that you’ve setup `kubectl` and `docker` to point at your cluster and docker registry.
 
 ### Minikube
 
@@ -46,3 +46,18 @@ Once you’ve configured your Kubernetes environment, you should be able to veri
 kubectl get nodes
 ```
 
+## DC/OS
+
+When deploying to DC/OS, you'll need to make sure that the `dcos` command line application is on your `PATH` and setup to point to your DC/OS cluster.
+
+## DC/OS Vagrant
+
+[DC/OS Vagrant](https://github.com/dcos/dcos-vagrant) can be used to quickly provision a DC/OS cluster on a local machine. Consult its README to get started.
+
+---------------------------------
+
+Once you've configured your DC/OS environment, you should be able to verify access with the following command:
+
+```bash
+dcos node
+```

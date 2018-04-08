@@ -1,4 +1,4 @@
-# Lightbend Orchestration for Kubernetes
+# Lightbend Orchestration
 
 @@toc { depth=2 }
 
@@ -12,6 +12,7 @@
 * [CLI Installation](cli-installation.md)
 * [Kubernetes Development](kubernetes-development.md)
 * [Kubernetes Deployment](kubernetes-deployment.md)
+* [DC/OS Deployment](dcos-deployment.md)
 * [Features In-Depth](features.md)
 * [Examples](examples.md)
 * [Reactive Sandbox](reactive-sandbox.md)

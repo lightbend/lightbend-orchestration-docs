@@ -2,7 +2,7 @@
 
 This page tracks the components of Lightbend Orchestration for Kubernetes. Note that `reactive-lib` is automatically included by `sbt-reactive-app`, so you do not normally
 need to specify its version. However, a particular version can be used by explicitly setting the `reactiveLibVersion`
-SBT setting.
+sbt setting.
 
 ## Latest Versions
 
@@ -28,7 +28,7 @@ SBT setting.
 
 * CLI now requires one (or more) of the following to be specified when generating Kubernetes resources: `--generate-all`, `--generate-services`, `--generate-pod-controllers`, `--generate-ingress`
 * Added `--ingress-tls-secret` flag to specify TLS secret for `Ingress` resources.
-* Added `pod-controller-restart-policy` flag to modify the restart policy, particular for `Job` resources. 
+* Added `pod-controller-restart-policy` flag to modify the restart policy, particular for `Job` resources.
 * Fixed a bug causing incorrect Akka Management Contact Point setting to be specified.
 * Fixed a bug causing incompatibility with some private Docker registries.
 * Added `--service-load-balancer-ip` flag to set the `loadBalancerIP` for `Service` resources.
@@ -71,7 +71,7 @@ SBT setting.
 
 ### 0.6.1 - Tuesday, February 13, 2018
 
-* Fixed a bug causing the plugin to fail on Lagom projects using SBT 1.0 or later.
+* Fixed a bug causing the plugin to fail on Lagom projects using sbt 1.0 or later.
 
 ### 0.6.0 - Monday, February 12, 2018
 
