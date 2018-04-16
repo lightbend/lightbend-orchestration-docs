@@ -8,11 +8,17 @@ SBT setting.
 
 | Project                                                                     |  Version |
 |-----------------------------------------------------------------------------|----------|
-| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.0.0`  |
+| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.1.0`  |
 | [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.7.0`  |
 | [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `1.1.0`  |
 
 ## reactive-cli
+
+### 1.1.0 - Sunday, April 15, 2018
+
+* Fix a bug in Kubernetes CPU and memory limit declarations
+* Improve Docker credentials, adding support for gcloud helper
+* Add feature to generate configuration for Marathon, thus providing DC/OS support.
 
 ### 1.0.0 - Tuesday, March 27, 2018
 
