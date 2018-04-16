@@ -12,7 +12,7 @@ Once you've installed the deployment tool, `reactive-cli`, you can use the `rp` 
 
 ## Deployments
 
-Now that you've built and published your project, you can use the `rp` program to generate resources for your Kubernetes cluster. Below, we'll cover the deployment of a service from [Chirper](https://github.com/lagom/lagom-java-sbt-chirper-example), a Lagom-based Twitter Clone. Be sure to refer to [our examples](examples.md) for more thorough documentation.
+Now that you've built and published your project, you can use the `rp` program to generate resources for your Kubernetes cluster. Below, we'll cover the deployment of a service from [Chirper](https://github.com/lagom/lagom-java-sbt-chirper-example), a Lagom-based Twitter Clone. Be sure to refer to @ref[our examples](examples.md) for more thorough documentation.
 
 ### Deployment Overview
 
@@ -234,7 +234,7 @@ Windows
 
 ## Multiple Images
 
-`rp generate-kubernetes-resources` can also be used to generate the resources for more than one image. This is useful in particular for `Ingress` resource generation, where many controllers do not allow multiple `Ingress` definitions for the same host. Refer to the [Examples](examples.md) page to see the syntax for this usage. [Chirper](https://github.com/lagom/lagom-java-sbt-chirper-example) in particular makes use of this feature for generating its `Ingress` resource.
+`rp generate-kubernetes-resources` can also be used to generate the resources for more than one image. This is useful in particular for `Ingress` resource generation, where many controllers do not allow multiple `Ingress` definitions for the same host. Refer to the @ref[Examples](examples.md) page to see the syntax for this usage. [Chirper](https://github.com/lagom/lagom-java-sbt-chirper-example) in particular makes use of this feature for generating its `Ingress` resource.
 
 ## Best Practices
 
