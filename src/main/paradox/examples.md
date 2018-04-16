@@ -1,6 +1,6 @@
 # Examples
 
-We've prepared sample applications using Lightbend Orchestration for Kubernetes to serve as a reference. Refer to the list below for more details.
+We've prepared sample applications using Lightbend Orchestration to serve as a reference. Refer to the list below for more details.
 
 ### Hello World
 
@@ -8,11 +8,11 @@ We've prepared sample applications using Lightbend Orchestration for Kubernetes 
 
 ### Chirper
 
-[Chirper](https://github.com/lagom/lagom-java-sbt-chirper-example/) is a Twitter-clone built using the [Lagom](https://www.lagomframework.com/) framework. Consult its `README.md` for information on how it can be deployed to Kubernetes.
+[Chirper](https://github.com/lagom/lagom-java-sbt-chirper-example/) is a Twitter-clone built using the [Lagom](https://www.lagomframework.com/) framework. Consult its `README.md` for information on how it can be deployed to Kubernetes and DC/OS.
 
 ### Akka Cluster Tooling Example
 
-[Akka Cluster Tooling Example](https://github.com/longshorej/akka-cluster-tooling-example) is a bare-bones Akka Cluster and HTTP application that illustrates the steps involved to take advantage of Lightbend Orchestration for Kubernetes.
+[Akka Cluster Tooling Example](https://github.com/longshorej/akka-cluster-tooling-example) is a bare-bones Akka Cluster and HTTP application that illustrates the steps involved to take advantage of Lightbend Orchestration.
 
 ### Online Auction
 

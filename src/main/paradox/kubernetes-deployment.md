@@ -8,11 +8,11 @@ Once you've installed the deployment tool, `reactive-cli`, you can use the `rp` 
 * Applications built and published to a registry (production) or the local docker engine ([Minikube](https://kubernetes.io/docs/getting-started-guides/minikube/))
 * `kubectl` installed and configured to point to your registry
 
-> Using Minikube? Make sure you run `eval $(minikube docker-env)` before following the steps below. When you need your old environment, you can get it back with `eval $(minikube docker-env -u)`. 
+> Using Minikube? Make sure you run `eval $(minikube docker-env)` before following the steps below. When you need your old environment, you can get it back with `eval $(minikube docker-env -u)`.
 
 ## Deployments
 
-Now that you've built and published your project, you can use the `rp` program to generate resources for your Kubernetes cluster. Below, we'll cover the deployment of a service from [Chirper](https://github.com/longshorej/lagom-java-chirper-tooling-example), a Lagom-based Twitter Clone. Be sure to refer to [our examples](examples.md) for more thorough documentation.
+Now that you've built and published your project, you can use the `rp` program to generate resources for your Kubernetes cluster. Below, we'll cover the deployment of a service from [Chirper](https://github.com/lagom/lagom-java-sbt-chirper-example), a Lagom-based Twitter Clone. Be sure to refer to [our examples](examples.md) for more thorough documentation.
 
 ### Deployment Overview
 
@@ -44,8 +44,8 @@ By combing this with `--deployment-type`, you can easily use these features to p
 will exist alongside the old one and requests will be load-balanced between the old instances and the new ones. You can
 adjust the ratio of traffic with the `--pod-deployment-replicas` option.
 
-> By default, instances of a given application that use Akka Cluster will all join the same cluster (indicated by application name) 
-under this mode. If you use Akka Cluster, be sure to provide the `--akka-cluster-join-existing` flag if your services 
+> By default, instances of a given application that use Akka Cluster will all join the same cluster (indicated by application name)
+under this mode. If you use Akka Cluster, be sure to provide the `--akka-cluster-join-existing` flag if your services
 have already been  deployed. This will guarantee the new pods will only join an already formed cluster.
 
 macOS / Linux
@@ -104,9 +104,9 @@ Windows
 
 #### Blue/Green Deployments
 
-You can also use `rp` to help facilitate [blue/green](https://docs.cloudfoundry.org/devguide/deploy-apps/blue-green.html) 
-deployments. This is a multi-step process and for each execution of `rp`, you must provide the `--deployment-type blue-green` 
-option. First, you will install the new version's Pod Controllers. Then, once satisfied, you'll simply update 
+You can also use `rp` to help facilitate [blue/green](https://docs.cloudfoundry.org/devguide/deploy-apps/blue-green.html)
+deployments. This is a multi-step process and for each execution of `rp`, you must provide the `--deployment-type blue-green`
+option. First, you will install the new version's Pod Controllers. Then, once satisfied, you'll simply update
 the `Service` and `Ingress` resources. You can then remove the old Pod Controllers. See below for an example:
 
 > Blue/Green deployments, when combined with Akka Cluster, will by default result in two separate Akka Clusters
@@ -234,14 +234,11 @@ Windows
 
 ## Multiple Images
 
-`rp generate-kubernetes-resources` can also be used to generate the resources for more than one image. This is useful
-in particular for `Ingress` resource generation, where many controllers do not allow multiple `Ingress` definitions
-for the same host. Refer to the [Examples](examples.md) page to see the syntax for this usage. [Chirper](https://github.com/longshorej/lagom-java-chirper-tooling-example)
-in particular makes use of this feature for generating its `Ingress` resource.
+`rp generate-kubernetes-resources` can also be used to generate the resources for more than one image. This is useful in particular for `Ingress` resource generation, where many controllers do not allow multiple `Ingress` definitions for the same host. Refer to the [Examples](examples.md) page to see the syntax for this usage. [Chirper](https://github.com/lagom/lagom-java-sbt-chirper-example) in particular makes use of this feature for generating its `Ingress` resource.
 
 ## Best Practices
 
-`rp` attempts to be flexible and integrate well into your existing workflow. It's recommended that you create and 
+`rp` attempts to be flexible and integrate well into your existing workflow. It's recommended that you create and
 version control a script for invoking `rp` with its various options so that you can audit your changes.
 
 Some users may choose to take this a step further and version control the output of the tool as well.

@@ -1,6 +1,6 @@
 # Kubernetes Development
 
-[sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app) includes an SBT task, `deploy minikube`, that can be
+[sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app) includes an sbt task, `deploy minikube`, that can be
 used to simplify running your application in your local Minikube. This is especially useful as a development tool
 to get a quick feedback on modifications as you develop your applications.
 
@@ -9,7 +9,7 @@ development-grade (i.e. don't use it in production) installations of Cassandra, 
 
 ### Prerequisites
 
-* An SBT project with [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app) enabled
+* An sbt project with [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app) enabled
 * [reactive-cli](https://github.com/lightbend/reactive-cli) installed
 * [helm](https://helm.sh/)
 * [minikube](https://github.com/kubernetes/minikube) v0.25.0 or later
@@ -17,11 +17,11 @@ development-grade (i.e. don't use it in production) installations of Cassandra, 
 
 ### Getting Started
 
-To use this feature, launch the SBT console and type `deploy minikube`. This will run the task on all aggregated
-subprojects. The task will install Helm and the Reactive Sandbox (if required) and install (or replace) all of the 
+To use this feature, launch the sbt console and type `deploy minikube`. This will run the task on all aggregated
+subprojects. The task will install Helm and the Reactive Sandbox (if required) and install (or replace) all of the
 applications. You can also run the task on a specific subproject if you only wish to deploy that application.
 
-> You can combine this with SBT's `~` operator to run the task on every file change.
+> You can combine this with sbt's `~` operator to run the task on every file change.
 
 For example, see the following (trimmed) output below:
 
@@ -58,7 +58,7 @@ sbt 'deploy minikube'
 
 ### Configuration
 
-The following SBT keys can be used to configure this feature, e.g. to register additional external services, control
+The following sbt keys can be used to configure this feature, e.g. to register additional external services, control
 the Reactive Sandbox installation, and define additional `rp` arguments.
 
 | Name / Type                                                                      | Description                                           |
@@ -66,7 +66,7 @@ the Reactive Sandbox installation, and define additional `rp` arguments.
 | deployMinikubeReactiveSandboxExternalServices<br/><br/> `Map[String, String]`    | A map of service names to service lookup addresses. This will be provided as an argument to rp for resources that are generated when running deploy minikube. Note that this map will only be added if reactive sandbox is enabled.
 | deployMinikubeAdditionalExternalServices <br/><br/> `Map[String, String]`        | An additional map of service names to service lookup addresses. These will always be provided to rp and take precedence over the Reactive Sandbox addresses.
 | deployMinikubeAkkaClusterBootstrapContactPoints               <br/><br/> `Int`   | When deploying applications with Akka Cluster Bootstrap enabled, the services will initially be started with this many contact points / replicas. Defaults to 1
-| deployMinikubeEnableReactiveSandbox      <br/><br/> `Boolean`                    | If enabled, Reactive Sandbox (a Docker image containing Cassandra, Kafka, ZooKeeper, Elasticsearch) will be deployed with this app. 
+| deployMinikubeEnableReactiveSandbox      <br/><br/> `Boolean`                    | If enabled, Reactive Sandbox (a Docker image containing Cassandra, Kafka, ZooKeeper, Elasticsearch) will be deployed with this app.
 | deployMinikubePlayHostAllowedProperty              <br/><br/> `String`           | If deploying a Play application, this property will be set to the Minikube IP.
 | deployMinikubePlayHttpSecretKeyProperty                  <br/><br/> `String`     | If deploying a Play application, this property will be set to the value specified below.
 | deployMinikubePlayHttpSecretKeyValue       <br/><br/> `String`                   | If deploying a Play application, this property will be set to the value specified above.

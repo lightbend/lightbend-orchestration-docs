@@ -36,7 +36,7 @@ rp generate-kubernetes-resources my-org/my-app:0.1.0 --join-existing-akka-cluste
 ```
 
 When deploying applications that use Akka Cluster, you'll typically want them to join the same cluster. This is especially true if you
-use Akka Persistence features. Because of this, it is recommended that you avoid Blue/Green deployments and instead use 
+use Akka Persistence features. Because of this, it is recommended that you avoid Blue/Green deployments and instead use
 the Canary (default) or Rolling deployment types
 
 ## Applications & Jobs
@@ -45,7 +45,7 @@ You can declare additional *applications* inside your Docker image. An applicati
 that should be executed for the application. An operator can then generate alternative resources using `rp` by simply
 declaring the application name.
 
-This is complemented by the support for generating `Job` resources. For example, the following configuration would
+On Kubernetes, this is complemented by the support for generating `Job` resources. For example, the following configuration would
 result in the main method defined by `App` being run by default. However, the operator can invoke `rp generate-kubernetes-resources --application my-job`
 to generate resources for the defined application instead.
 
@@ -56,7 +56,7 @@ mainClass in Compile := Some("com.example.App")
 
 applications += "my-job" -> Vector("bin/myjob")
 
-``` 
+```
 
 And, given the following main classes:
 
@@ -84,18 +84,15 @@ rp generate-kubernetes-resources my-org/my-app:0.1.0 \
   --application my-job \
   --pod-controller-type job
 ```
- 
+
 ## Docker & JVM Configuration
 
-The Docker image is the deployment unit of choice and powers a wide variety of orchestration systems, including Kubernetes. The docker images created by Lightbend Orchestration for Kubernetes offer the following default configuration:
+The Docker image is the deployment unit of choice and powers a wide variety of orchestration systems, including Kubernetes and DC/OS. The docker images created by Lightbend Orchestration offer the following default configuration:
 
 1. Minimal base-image, `openjdk:alpine`, to reduce the size of the images produced.
-2. Docker repository is set based on the project name. For example, given a Lagom root project `my-system` and a service `my-svc-impl`, the image's name will default to `my-system/my-svc-impl`.
-3. JVM's Docker CPU and memory limits are enabled, as discussed on this Oracle [Blog Post](https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits).
+2. JVM's Docker CPU and memory limits are enabled, as discussed on this Oracle [Blog Post](https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits).
 
-Additionally, a convenience setting is provided, `alpinePackages`, which can be used to specify additional Alpine packages that should
-be installed when building the Docker image. For example, the following build configuration ensures `core-utils` is
-added to the Docker image:
+Additionally, a convenience setting is provided, `alpinePackages`, which can be used to specify additional Alpine packages that should be installed when building the Docker image. For example, the following build configuration ensures `core-utils` is added to the Docker image:
 
 ```sbt
 alpinePackages += "coreutils"
@@ -107,14 +104,14 @@ An endpoint defines how your application communicates with other services and th
 
 #### Project
 
-Endpoints are specified using the `endpoints` SBT setting. For example, the following declares an endpoint, `http`, that is available on ports `80` and `443` via the virtual host `myservice.example.org`:
+Endpoints are specified using the `endpoints` sbt setting. For example, the following declares an endpoint, `http`, that is available on ports `80` and `443` via the virtual host `myservice.example.org`:
 
 ```sbt
 endpoints += HttpEndpoint(
-  name = "http", 
+  name = "http",
   ingress = HttpIngress(
-    ingressPorts = Vector(80, 443), 
-    hosts = Vector("myservice.example.org"), 
+    ingressPorts = Vector(80, 443),
+    hosts = Vector("myservice.example.org"),
     paths = Vector.empty))
 ```
 
@@ -124,12 +121,15 @@ For Lagom applications, an endpoint, `http` is automatically declared for each m
 
 #### Kubernetes
 
-When generating deployments for Kubernetes using the `rp` tool, [Service](https://kubernetes.io/docs/concepts/services-networking/service/) declarations are created for each endpoint. Additionally, if any ingress settings are defined for the endpoint, the appropriate [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resources will be created and configured to point at the appropriate service.
+When generating configuration for Kubernetes using the `rp` tool, [Service](https://kubernetes.io/docs/concepts/services-networking/service/) declarations are created for each endpoint. Additionally, if any ingress settings are defined for the endpoint, the appropriate [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resources will be created and configured to point at the appropriate service.
 
+#### DC/OS
+
+When generating configuration for DC/OS using the `rp` tool, [Marathon Port Definitions](https://mesosphere.github.io/marathon/docs/ports.html) are generated for each microservice. Additionally, if any ingress settings are defined for the endpoint, the appropriate [Marathon-lb](https://github.com/mesosphere/marathon-lb) configuration is defined.
 
 ## Secrets
 
-A non-blocking secrets API is available. The secrets must be declared in the `build.sbt` file, and then they can be accessed at runtime using the provided libraries.
+A non-blocking secrets API is available for Kubernetes. The secrets must be declared in the `build.sbt` file, and then they can be accessed at runtime using the provided libraries. This feature will be made available for DC/OS at a later date.
 
 #### Project
 
@@ -144,7 +144,7 @@ A developer can access this setting at runtime:
 ```scala
 import com.lightbend.rp.secrets.scaladsl.SecretReader
 
-val secret: Future[Option[ByteString]] = 
+val secret: Future[Option[ByteString]] =
   SecretReader.get(name = "my-secret", key = "my-key")
 ```
 
@@ -177,7 +177,7 @@ the configuration below to do that.
 Add the following configuration to your `application.conf` file to enable the Lagom Java Service Locator:
 
 ```hocon
-play.modules.enabled += 
+play.modules.enabled +=
   "com.lightbend.rp.servicediscovery.lagom.javadsl.ServiceLocatorModule"
 ```
 
@@ -191,7 +191,7 @@ import com.lightbend.rp.servicediscovery.lagom.scaladsl.LagomServiceLocatorCompo
 ...
 
 class LagomLoader extends LagomApplicationLoader {
-  override def load(context: LagomApplicationContext) = 
+  override def load(context: LagomApplicationContext) =
     new MyLagomApplication(context) with LagomServiceLocatorComponents
 
 ...
@@ -204,7 +204,7 @@ Below, you'll find some example code that uses the service locator to find the `
 ```scala
 import com.lightbend.rp.servicediscovery.scaladsl.ServiceLocator
 
-val service: Future[Option[Service]] = 
+val service: Future[Option[Service]] =
   ServiceLocator.lookupOne(name = "my-service", endpoint = "http")
 ```
 

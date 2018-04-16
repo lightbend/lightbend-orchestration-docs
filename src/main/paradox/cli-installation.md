@@ -1,6 +1,6 @@
 # CLI Installation
 
-Deployment of your application requires the usage of a CLI tool, `rp`, provided by [`reactive-cli`](https://github.com/lightbend/reactive-cli). Typically, you'll want to install this on the same machine that you use `kubectl` from. A bastion host is recommended for production usage, but for local development this can be done on your own machine. 
+Deployment of your application requires the usage of a CLI tool, `rp`, provided by [`reactive-cli`](https://github.com/lightbend/reactive-cli). Typically, you'll want to install this on the same machine that you use `kubectl` or `dcos` from. A bastion host is recommended for production usage, but for local development this can be done on your own machine.
 
 ## Install the CLI
 
@@ -74,7 +74,7 @@ rp version
 ### Linux (Other)
 
 Linux (generic `.tar.gz` file) packages are available on Lightbend's [Bintray Repository](https://bintray.com/lightbend/generic/reactive-cli).
-To install, download the latest version (Available under the *Files* tab for a given version), extract it, and ensure that `rp` is available on your `PATH`. 
+To install, download the latest version (Available under the *Files* tab for a given version), extract it, and ensure that `rp` is available on your `PATH`.
 
 ### Windows
 
