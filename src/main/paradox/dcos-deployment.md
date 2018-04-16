@@ -10,7 +10,7 @@ Once you've installed the deployment tool, `reactive-cli`, you can use the `rp` 
 
 ## Deployments
 
-Now that you've built and published your project, you can use the `rp` program to generate Marathon configuration for your DC/OS cluster. Below, we'll cover the deployment of a service from [Chirper](https://github.com/lagom/lagom-java-sbt-chirper-example), a Lagom-based Twitter Clone. Be sure to refer to [our examples](examples.md) for more thorough documentation.
+Now that you've built and published your project, you can use the `rp` program to generate Marathon configuration for your DC/OS cluster. Below, we'll cover the deployment of a service from [Chirper](https://github.com/lagom/lagom-java-sbt-chirper-example), a Lagom-based Twitter Clone. Be sure to refer to @ref[our examples](examples.md) for more thorough documentation.
 
 ### Initial Deployment
 
