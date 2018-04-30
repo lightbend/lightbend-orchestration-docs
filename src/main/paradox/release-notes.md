@@ -8,11 +8,16 @@ sbt setting.
 
 | Project                                                                     |  Version |
 |-----------------------------------------------------------------------------|----------|
-| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.1.0`  |
+| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.1.1`  |
 | [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.7.0`  |
 | [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `1.1.0`  |
 
 ## reactive-cli
+
+### 1.1.1 - Monday, April 30, 2018
+
+* Fix a bug with using oauth2 tokens as credentials for docker registry
+* Avoid CLI and build plugin version mismatch by requiring sbt-reactive-app 1.1.0 or newer
 
 ### 1.1.0 - Sunday, April 15, 2018
 
