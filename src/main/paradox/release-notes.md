@@ -8,11 +8,16 @@ sbt setting.
 
 | Project                                                                     |  Version |
 |-----------------------------------------------------------------------------|----------|
-| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.1.1`  |
+| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.1.2`  |
 | [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.7.0`  |
 | [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `1.1.0`  |
 
 ## reactive-cli
+
+### 1.1.2 - Tuesday, May 8, 2018
+
+* Fix a bug in HTTP header parsing
+* Add a flag `--stacktrace` to print out the full stack trace when `rp` fails
 
 ### 1.1.1 - Monday, April 30, 2018
 
