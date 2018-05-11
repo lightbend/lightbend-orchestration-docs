@@ -14,6 +14,10 @@ sbt setting.
 
 ## reactive-cli
 
+### 1.1.3 - Friday, May 11, 2018
+
+* Fix a bug in HTTP header parsing
+
 ### 1.1.2 - Tuesday, May 8, 2018
 
 * Fix a bug in HTTP header parsing
