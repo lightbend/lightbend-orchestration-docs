@@ -8,11 +8,15 @@ sbt setting.
 
 | Project                                                                     |  Version |
 |-----------------------------------------------------------------------------|----------|
-| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.1.2`  |
+| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.1.4`  |
 | [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.7.0`  |
 | [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `1.1.0`  |
 
 ## reactive-cli
+
+### 1.1.4 - Monday, May 14, 2018
+
+* Fix a bug in Marathon configuration generation
 
 ### 1.1.3 - Friday, May 11, 2018
 
