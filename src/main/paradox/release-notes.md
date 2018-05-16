@@ -9,8 +9,8 @@ sbt setting.
 | Project                                                                     |  Version |
 |-----------------------------------------------------------------------------|----------|
 | [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.1.4`  |
-| [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.7.0`  |
-| [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `1.1.0`  |
+| [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.8.0`  |
+| [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `1.2.0`  |
 
 ## reactive-cli
 
@@ -62,6 +62,10 @@ sbt setting.
 
 ## reactive-lib
 
+### 0.8.0 - Wednesday, May 16, 2018
+
+* Update akka-management version to `0.13`
+
 ### 0.7.0 - Tuesday, March 27, 2018
 
 * Add retry mechanism to service locator
@@ -79,6 +83,10 @@ sbt setting.
 * Visibility of healthy/readiness methods changed to public for better integration into user's applications
 
 ## sbt-reactive-app
+
+### 1.2.0 - Wednesday, May 16, 2018
+
+* Upgraded automatic inclusion of reactive-lib to `0.8.0`.
 
 ### 1.1.0 - Tuesday, March 27, 2017
 
