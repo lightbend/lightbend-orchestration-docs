@@ -8,11 +8,15 @@ sbt setting.
 
 | Project                                                                     |  Version |
 |-----------------------------------------------------------------------------|----------|
-| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.1.4`  |
+| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.2.0`  |
 | [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.8.0`  |
 | [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `1.2.0`  |
 
 ## reactive-cli
+
+### 1.2.0 - Thursday, May 24, 2018
+
+* Add a flag `--registry-use-local` which reads local docker images first before trying to reach remote registry
 
 ### 1.1.4 - Monday, May 14, 2018
 
