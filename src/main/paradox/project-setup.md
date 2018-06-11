@@ -21,7 +21,7 @@ At this time, the following technologies are supported:
 
 ### Example Project
 
-Before explaining the configuration in detail, let's take a look at steps needed to use Lightbend Orchestration an existing project. We've provided an example Lagom application: [lagom-java-chirper-tooling-example](https://github.com/mitkus/lagom-java-chirper-tooling-example). It's a small Twitter clone utilising a microservices architecture and event sourcing.
+Before explaining the configuration in detail, let's take a look at steps needed to use Lightbend Orchestration in an existing project. We've provided an example Lagom application: [lagom-java-chirper-tooling-example](https://github.com/mitkus/lagom-java-chirper-tooling-example). It's a small Twitter clone utilising a microservices architecture and event sourcing.
 
 #### Setup
 

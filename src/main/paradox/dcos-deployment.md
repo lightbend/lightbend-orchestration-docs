@@ -110,12 +110,12 @@ Windows
 
 ### Private Docker Registry
 
-Docker images you build using sbt-reactive-app plugin will need to be accessed by the CLI. Depending on where you put them, the CLI may need your authentication credentials to be able to access the registry. It will try to read credentials stored locally on your system by docker after you authenticate:
+Docker images you build using the sbt-reactive-app plugin will need to be accessed by the CLI. Depending on where you put them, the CLI may need your authentication credentials to be able to access the registry. It will try to read credentials stored locally on your system by docker after you authenticate:
 
 ```bash
 docker login my-docker-registry.bintray.io
 ```
-When reading these credentials CLI might prompt to enter your user password, since the data is stored in a secure OS-specific enclave. If you don't want this, it is possible to explicitly provide your credentials by writing them down to `~/.lightbend/docker.credentials` (Linux, macOS) or `%HOMEPATH%\.lightbend\docker.credentials` (Windows) file:
+When reading these credentials the CLI might prompt to enter your user password, since the data is stored in a secure OS-specific enclave. If you don't want this, it is possible to explicitly provide your credentials by writing them down to `~/.lightbend/docker.credentials` (Linux, macOS) or `%HOMEPATH%\.lightbend\docker.credentials` (Windows) file:
 
 ```
 registry = my-docker-registry.bintray.io
