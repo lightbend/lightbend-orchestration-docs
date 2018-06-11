@@ -18,7 +18,7 @@ sbt> docker:publishLocal
 
 To publish your applications to a Docker Registry, you'll need to configure your build and authenticate to the registry.
 
-1. For each project, set the `dockerRepository` sbt Setting. For example:
+1. For each project, set the `dockerRepository` sbt setting. For example:
 ```scala
 dockerRepository := "my-docker-registry.bintray.io"
 ```
