@@ -9,7 +9,7 @@ Deployment of your application requires the usage of a CLI tool, `rp`, provided 
 Releases for macOS are available using [Homebrew](https://brew.sh/). To set this up and install the CLI, use the command below.
 
 ```bash
-brew tap lightbend/tools && brew install lightbend/tools/reactive-cli
+brew install lightbend/tools/reactive-cli
 ```
 
 To upgrade to a newer version of the CLI, use `brew upgrade`.
