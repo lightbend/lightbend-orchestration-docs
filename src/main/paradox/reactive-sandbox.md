@@ -1,6 +1,6 @@
 # Reactive Sandbox
 
-Lightbend Orchestration for Kubernetes is integrated with Lightbend's [Reactive Sandbox](https://github.com/lightbend/reactive-sandbox)
+Lightbend Orchestration is integrated with Lightbend's [Reactive Sandbox](https://github.com/lightbend/reactive-sandbox)
 which provides development-grade (i.e. don't use it in production) installations of Cassandra, Elasticsearch, Kafka, and ZooKeeper.
 
 You can install the sandbox with the commands below. If you use the `deploy minikube` sbt task, it will automatically

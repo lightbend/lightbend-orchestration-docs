@@ -9,7 +9,7 @@ development-grade (i.e. don't use it in production) installations of Cassandra, 
 
 ### Prerequisites
 
-* An sbt project with [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app) enabled
+* An sbt project with [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app) set up
 * [reactive-cli](https://github.com/lightbend/reactive-cli) installed
 * [helm](https://helm.sh/)
 * [minikube](https://github.com/kubernetes/minikube) v0.25.0 or later
