@@ -24,6 +24,8 @@ To verify your installation:
 rp version
 ```
 
+If you don't have `jq` you must also install that: `brew install jq`.
+
 ### Debian & Ubuntu
 
 Debian and Ubuntu `.deb` packages are available on Lightbend's [Debian Repository](https://bintray.com/lightbend/deb). To set this up and install the CLI, use the command below. Debian 8, Ubuntu 14.04, and later are supported
