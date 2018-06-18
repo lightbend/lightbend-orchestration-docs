@@ -20,13 +20,13 @@ The command below will deploy version `1.0.0` of `activator-lagom-java-chirper/f
 
 macOS / Linux
 :   ```bash
-rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:1.0.0" \
+rp generate-kubernetes-resources --generate-all "activator-lagom-java-chirper/front-end:1.0.0" \
   --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     ```
 
 Windows
 :   ```powershell
-rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:1.0.0" \
+rp.exe generate-kubernetes-resources --generate-all "activator-lagom-java-chirper/front-end:1.0.0" \
   --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     ```
 
@@ -34,7 +34,7 @@ rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:1.0
 
 ### Partial Deployments & Upgrades
 
-`rp` allows you to generate a subset of resources when provided with the proper flags; `--generate-pod-controllers`, `--generate-services`, and `--generate-ingress`. When specified, only those resource types specified will be generated. You can mix and match these arguments, for instance, specifying `--generate-services` and `--generate-ingress` will generate `Ingress` and `Service` resources. When no generation flags are present (default), all resource types are generated.
+`rp` allows you to generate a subset of resources when provided with the proper flags; `--generate-pod-controllers`, `--generate-services`, and `--generate-ingress`. When specified, only those resource types specified will be generated. You can mix and match these arguments, for instance, specifying `--generate-services` and `--generate-ingress` will generate `Ingress` and `Service` resources. To generate all resource types, use `--generate-all`.
 
 By combing this with `--deployment-type`, you can easily use these features to perform canary deployments, blue-green deployments, and rolling upgrades.
 
@@ -53,19 +53,19 @@ macOS / Linux
     #
     # Initial install of 2.0.0 with 10 replicas
     #
-    rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0"  \
+    rp generate-kubernetes-resources --generate-all "activator-lagom-java-chirper/front-end:2.0.0"  \
     --pod-deployment-replicas 10 \
     --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Install 2.1.0 with 1 replica, thus ensuring a 10-1 ratio of traffic
     #
-    rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0"  \
+    rp generate-kubernetes-resources --generate-all "activator-lagom-java-chirper/front-end:2.1.0"  \
     --pod-deployment-replicas 1 --akka-cluster-join-existing \
     --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Move 2.1.0 to 10 replicas (1-1 ratio)
     #
-    rp generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0"  \
+    rp generate-kubernetes-resources --generate-all "activator-lagom-java-chirper/front-end:2.1.0"  \
     --pod-deployment-replicas 10 --akka-cluster-join-existing \
     --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
@@ -80,19 +80,19 @@ Windows
     #
     # Initial install of 2.0.0 with 10 replicas
     #
-    rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.0.0"  \
+    rp.exe generate-kubernetes-resources --generate-all "activator-lagom-java-chirper/front-end:2.0.0"  \
     --pod-deployment-replicas 10 \
     --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Install 2.1.0 with 1 replica, thus ensuring a 10-1 ratio of traffic
     #
-    rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0"  \
+    rp.exe generate-kubernetes-resources --generate-all "activator-lagom-java-chirper/front-end:2.1.0"  \
     --pod-deployment-replicas 1 \
     --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
     # Move 2.1.0 to 10 replicas (1-1 ratio)
     #
-    rp.exe generate-kubernetes-resources "activator-lagom-java-chirper/front-end:2.1.0"  \
+    rp.exe generate-kubernetes-resources --generate-all "activator-lagom-java-chirper/front-end:2.1.0"  \
     --pod-deployment-replicas 10 \
     --env JAVA_OPTS="-Dplay.crypto.secret=youmustchangeme4" | kubectl apply -f -
     #
