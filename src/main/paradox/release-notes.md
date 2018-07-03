@@ -18,10 +18,6 @@ sbt setting.
 
 * Add a flag `--registry-use-local` which reads local docker images first before trying to reach remote registry
 
-### 1.2.0 - Thursday, May 24, 2018
-
-* Add a flag `--registry-use-local` which reads local docker images first before trying to reach remote registry
-
 ### 1.1.4 - Monday, May 14, 2018
 
 * Fix a bug in Marathon configuration generation
