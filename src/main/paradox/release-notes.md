@@ -9,7 +9,7 @@ sbt setting.
 | Project                                                                     |  Version |
 |-----------------------------------------------------------------------------|----------|
 | [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.2.0`  |
-| [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.8.1`  |
+| [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.8.2`  |
 | [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `1.2.2`  |
 
 ## reactive-cli
@@ -65,6 +65,11 @@ sbt setting.
 * Added feature to allow resources to be generated from multiple images in one invocation. `Ingress` resources in particular are now merged by host if more than one is generated.
 
 ## reactive-lib
+
+### 0.8.2 - Tuesday, July 3, 2018
+
+* Support alternate Kubernetes cluster DNS suffixes from environment
+* Update akka-management version to `0.15.0`
 
 ### 0.8.1 - Wednesday, May 30, 2018
 
