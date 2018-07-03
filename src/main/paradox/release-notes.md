@@ -10,7 +10,7 @@ sbt setting.
 |-----------------------------------------------------------------------------|----------|
 | [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.2.0`  |
 | [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.8.2`  |
-| [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `1.2.2`  |
+| [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `1.2.3`  |
 
 ## reactive-cli
 
@@ -96,6 +96,10 @@ sbt setting.
 * Visibility of healthy/readiness methods changed to public for better integration into user's applications
 
 ## sbt-reactive-app
+
+### 1.2.3 - Tuesday, July 3, 2018
+
+* Upgraded automatic inclusion of reactive-lib to `0.8.2`.
 
 ### 1.2.2 - Friday, June 22, 2018
 
