@@ -20,7 +20,7 @@ A service discovery-based approach to Akka Cluster formation that allows you to 
 
 **Endpoint Detection & Declaration**
 
-Microservices are detected and HTTP endpoints are automatically declared for you based on the service name. For Kubernetes, this translates to the generation of `Service` and `Ingress` resources. On DC/OS, this means that port specification and [Marathon-lb](https://github.com/mesosphere/marathon-lb) configuration will be generated for you. Additional endpoints can be declared manually as well. Port declaration and configuration for these endpoints is automatically handled when possible but APIs are provided to calculate the determine host and port if your project manually performs the socket binding.
+Microservices are detected and HTTP endpoints are automatically declared for you based on the service name. For Kubernetes, this translates to the generation of `Service` and `Ingress` resources. On DC/OS, this means that port specification and [Marathon-lb](https://github.com/mesosphere/marathon-lb) configuration will be generated for you. Additional endpoints can be declared manually as well. Port declaration and configuration for these endpoints is automatically handled when possible but APIs are provided to determine the host and port if your project manually performs the socket binding.
 
 **Docker & JVM Configuration**
 
@@ -38,7 +38,7 @@ A Service Location facility is provided that understands the conventions produce
 
 An application status (health and readiness) facility is provided. By default, applications that use Akka Cluster will not be indicated as "ready" until
 they have joined (or formed) a cluster. When combined with [Split Brain Resolver](https://developer.lightbend.com/docs/akka-commercial-addons/current/split-brain-resolver.html),
- this gives you a very reliable mechanism for deploy Akka Cluster-based applications. These facilities are easily extensible by your application so that you can layer additional
+ this gives you a very reliable mechanism for deploying Akka Cluster-based applications. These facilities are easily extensible by your application so that you can layer additional
 health and readiness checks on top of the provided ones.
 
 ## Supported Platforms
