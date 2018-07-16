@@ -8,11 +8,16 @@ sbt setting.
 
 | Project                                                                     |  Version |
 |-----------------------------------------------------------------------------|----------|
-| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.2.0`  |
+| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.3.0`  |
 | [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.8.2`  |
-| [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `1.2.3`  |
+| [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `1.3.0`  |
 
 ## reactive-cli
+
+### 1.3.0 - Monday, July 16, 2018
+
+* Support `annotations` label in docker images created by sbt-reactive-app. Kubernetes pods will
+  have annotations added, DC/OS applications will have labels added.
 
 ### 1.2.0 - Thursday, May 24, 2018
 
@@ -96,6 +101,11 @@ sbt setting.
 * Visibility of healthy/readiness methods changed to public for better integration into user's applications
 
 ## sbt-reactive-app
+
+### 1.3.0 - Monday, July 16, 2018
+
+* Add `annotations` setting, a `Map` of keys and values that will be exported as labels on the Docker image.
+  reactive-cli will use these to annotate DC/OS or Kubernetes resources.
 
 ### 1.2.3 - Tuesday, July 3, 2018
 

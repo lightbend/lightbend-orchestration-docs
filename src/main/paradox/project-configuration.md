@@ -83,6 +83,7 @@ Your application may require that you manually enable or disable the various set
 | Name / Type                                                              | Description                                           |
 |--------------------------------------------------------------------------|-------------------------------------------------------|
 | appName                    <br/><br/> `String`                           | Specifies the service name. Defaults to the sbt project's name for regular projects. Defaults to the Lagom service name for Lagom projects |
+| annotations                <br/><br/> `Map[String, String]`              | Key/value pairs to export as annotations. |
 | enableAkkaClusterBootstrap <br/><br/> `Boolean`                          | Specifies whether Akka Cluster Bootstrapping should be enabled. When enabled, an Akka extension will be enabled that will automatically form your cluster using service discovery.  |
 | enableCommon               <br/><br/> `Boolean`                          | Specifies whether basic features like Platform detection should be enabled |
 | enablePlayHttpBinding      <br/><br/> `Boolean`                          | Specifies whether automatic HTTP port binding for Play & Lagom should be enabled|
