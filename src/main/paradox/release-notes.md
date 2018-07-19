@@ -8,8 +8,8 @@ sbt setting.
 
 | Project                                                                     |  Version |
 |-----------------------------------------------------------------------------|----------|
-| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.3.0`  |
-| [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.8.2`  |
+| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.3.1`  |
+| [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.9.0`  |
 | [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `1.3.0`  |
 
 ## reactive-cli
@@ -71,6 +71,10 @@ sbt setting.
 
 ## reactive-lib
 
+### 0.9.0 - Wednesday, July 18, 2018
+
+* Update akka-management version to `0.17.0`
+
 ### 0.8.2 - Tuesday, July 3, 2018
 
 * Support alternate Kubernetes cluster DNS suffixes from environment
@@ -101,6 +105,10 @@ sbt setting.
 * Visibility of healthy/readiness methods changed to public for better integration into user's applications
 
 ## sbt-reactive-app
+
+### 1.3.1 - Wednesday, July 18, 2018
+
+* Upgraded automatic inclusion of reactive-lib to `0.9.0`.
 
 ### 1.3.0 - Monday, July 16, 2018
 
