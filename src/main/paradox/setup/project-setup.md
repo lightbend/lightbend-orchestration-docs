@@ -29,9 +29,11 @@ To use it with Lightbend Orchestration, follow these steps:
 
 1) Add the plugin to your project's `project/plugins.sbt` file:
 
+@@@vars
 ```scala
-addSbtPlugin("com.lightbend.rp" % "sbt-reactive-app" % "1.3.1")
+addSbtPlugin("com.lightbend.rp" % "sbt-reactive-app" % "$sbtreactiveapp$")
 ```
+@@@
 
 2) Enable it for each subproject which will get packaged into a Docker image. When using Lagom those are service *impl* projects, as well as any frontends that you have. Don't enable it for the *api* projects, those only define service interfaces and do not produce any executables. In our case this can be done by adding `SbtReactiveAppPlugin` to the `enablePlugins()` call in `build.sbt` file. It should look like this:
 
