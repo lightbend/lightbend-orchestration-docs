@@ -6,11 +6,13 @@ sbt setting.
 
 ## Latest Versions
 
+@@@vars
 | Project                                                                     |  Version |
 |-----------------------------------------------------------------------------|----------|
-| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | `1.3.1`  |
-| [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | `0.9.0`  |
-| [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | `1.3.0`  |
+| [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | $reactivecli$  |
+| [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | $reactivelib$  |
+| [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | $sbtreactiveapp$   |
+@@@
 
 ## reactive-cli
 
