@@ -4,6 +4,12 @@
 
 When deploying to Kubernetes, you'll first need to setup your Kubernetes cluster. Below, you’ll find information on how to do this on your own local cluster, Minikube, as well as IBM's Cloud offerings. If you have access to a different Kubernetes environment, ensure that you’ve setup `kubectl` and `docker` to point at your cluster and docker registry.
 
+<link rel="stylesheet" type="text/css" href="css/custom.css">
+
+@@@ warning
+Integration with all deployment targets except for Minikube is **Incubating** at this point.
+@@@
+
 ### Minikube
 
 [Minikube](https://kubernetes.io/docs/getting-started-guides/minikube/) provides a way for you to run a local Kubernetes cluster for development purposes. The command below will reset your Minikube and ensure that `kubectl` and `docker` can communicate with it.
