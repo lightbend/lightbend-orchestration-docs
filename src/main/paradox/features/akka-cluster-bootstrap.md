@@ -1,5 +1,11 @@
 ## Akka Cluster Bootstrap
 
+<link rel="stylesheet" type="text/css" href="../css/custom.css">
+
+@@@ note
+Integration with all deployment targets except for Minikube is **Incubating** at this point.
+@@@
+
 [Akka Cluster Bootstrap][akka-cluster-bootstrap] is an extension module to Akka that allows an Akka Cluster to (semi) automatically discover its neighbouring nodes, and join the existing cluster, or safely form a new cluster for discovered nodes.
 
 When enabled from Lightbend Orchestration, this feature will use service discovery to identify other contact points. Once the requisite number of
@@ -38,11 +44,5 @@ rp generate-kubernetes-resources my-org/my-app:0.1.0 --join-existing-akka-cluste
 When deploying applications that use Akka Cluster, you'll typically want them to join the same cluster. This is especially true if you
 use Akka Persistence features. Because of this, it is recommended that you avoid Blue/Green deployments and instead use
 the Canary (default) or Rolling deployment types
-
-<link rel="stylesheet" type="text/css" href="../css/custom.css">
-
-@@@ note
-Integration with all deployment targets except for Minikube is **Incubating** at this point.
-@@@
 
   [akka-cluster-bootstrap]: https://developer.lightbend.com/docs/akka-management/current/bootstrap.html

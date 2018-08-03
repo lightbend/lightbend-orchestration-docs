@@ -19,20 +19,21 @@ For Play applications, an endpoint, `http`, is automatically added for Play's HT
 
 For Lagom applications, an endpoint, `http` is automatically declared for each microservice with the appropriate ingress settings. The service locator offers tight integration with it, allowing you to find other services by simply looking up their service name.
 
-### Kubernetes
+<link rel="stylesheet" type="text/css" href="../css/custom.css">
 
-When generating configuration for Kubernetes using the `rp` tool, [Service](https://kubernetes.io/docs/concepts/services-networking/service/) declarations are created for each endpoint. Additionally, if any ingress settings are defined for the endpoint, the appropriate [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resources will be created and configured to point at the appropriate service.
+### Kubernetes
 
 @@@ note
 Integration with Kubernetes except for Minikube is **Incubating** at this point.
 @@@
 
+When generating configuration for Kubernetes using the `rp` tool, [Service](https://kubernetes.io/docs/concepts/services-networking/service/) declarations are created for each endpoint. Additionally, if any ingress settings are defined for the endpoint, the appropriate [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resources will be created and configured to point at the appropriate service.
+
+
 ### DC/OS
-
-When generating configuration for DC/OS using the `rp` tool, [Marathon Port Definitions](https://mesosphere.github.io/marathon/docs/ports.html) are generated for each microservice. Additionally, if any ingress settings are defined for the endpoint, the appropriate [Marathon-lb](https://github.com/mesosphere/marathon-lb) configuration is defined.
-
-<link rel="stylesheet" type="text/css" href="../css/custom.css">
 
 @@@ note
 Integration with DC/OS is **Incubating** at this point.
 @@@
+
+When generating configuration for DC/OS using the `rp` tool, [Marathon Port Definitions](https://mesosphere.github.io/marathon/docs/ports.html) are generated for each microservice. Additionally, if any ingress settings are defined for the endpoint, the appropriate [Marathon-lb](https://github.com/mesosphere/marathon-lb) configuration is defined.

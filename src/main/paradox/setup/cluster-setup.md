@@ -2,13 +2,13 @@
 
 ## Kubernetes
 
-When deploying to Kubernetes, you'll first need to setup your Kubernetes cluster. Below, you’ll find information on how to do this on your own local cluster, Minikube, as well as IBM's Cloud offerings. If you have access to a different Kubernetes environment, ensure that you’ve setup `kubectl` and `docker` to point at your cluster and docker registry.
-
 <link rel="stylesheet" type="text/css" href="css/custom.css">
 
 @@@ note
 Integration with Kubernetes except for Minikube is **Incubating** at this point.
 @@@
+
+When deploying to Kubernetes, you'll first need to setup your Kubernetes cluster. Below, you’ll find information on how to do this on your own local cluster, Minikube, as well as IBM's Cloud offerings. If you have access to a different Kubernetes environment, ensure that you’ve setup `kubectl` and `docker` to point at your cluster and docker registry.
 
 ### Minikube
 
@@ -54,11 +54,11 @@ kubectl get nodes
 
 ## DC/OS
 
-When deploying to DC/OS, you'll need to make sure that the `dcos` command line application is on your `PATH` and setup to point to your DC/OS cluster.
-
 @@@ note
 Integration with DC/OS is **Incubating** at this point.
 @@@
+
+When deploying to DC/OS, you'll need to make sure that the `dcos` command line application is on your `PATH` and setup to point to your DC/OS cluster.
 
 ## DC/OS Vagrant
 

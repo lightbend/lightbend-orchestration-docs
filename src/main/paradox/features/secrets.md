@@ -21,14 +21,14 @@ val secret: Future[Option[ByteString]] =
 
 #### Kubernetes
 
-An operator can declare this secret before generating the deployment resources:
-
-```bash
-kubectl create secret generic my-secret --from-file=my-key=./path-to-my-secret-file
-```
-
 <link rel="stylesheet" type="text/css" href="../css/custom.css">
 
 @@@ note
 Integration with Kubernetes except for Minikube is **Incubating** at this point.
 @@@
+
+An operator can declare this secret before generating the deployment resources:
+
+```bash
+kubectl create secret generic my-secret --from-file=my-key=./path-to-my-secret-file
+```

@@ -45,8 +45,8 @@ health and readiness checks on top of the provided ones.
 
 ## Target platforms
 
-The tooling helps you leverage these features on Kubernetes and DC/OS (via Marathon).
-
 @@@ note
 Integration with both Kubernetes and DC/OS is **Incubating** at this point.
 @@@
+
+The tooling helps you leverage these features on Kubernetes and DC/OS (via Marathon).

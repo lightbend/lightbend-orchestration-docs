@@ -1,12 +1,12 @@
 # Kubernetes Deployment
 
-Once you've installed the deployment tool, `reactive-cli`, you can use the `rp` program it provides to generate Kubernetes resources. These will then need to be supplied to `kubectl` to complete the deployment.
-
 <link rel="stylesheet" type="text/css" href="css/custom.css">
 
 @@@ note
 Integration with Kubernetes except for Minikube is **Incubating** at this point.
 @@@
+
+Once you've installed the deployment tool, `reactive-cli`, you can use the `rp` program it provides to generate Kubernetes resources. These will then need to be supplied to `kubectl` to complete the deployment.
 
 ### Prerequisites
 
