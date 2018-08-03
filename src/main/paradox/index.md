@@ -4,6 +4,10 @@ Lightbend Orchestration is a developer-centric suite of tools that helps you dep
 
 <img src="files/orchestration.png" style="width:554px; height: 387px;" class="small-12 float-center">
 
+### Status of Lightbend Orchestration
+
+Lightbend Orchestration is currently a Technology Preview. We encourage using this during development on Minikube, but integration with any other deployment targets including Kubernetes and DC/OS are currently at **Incubating** stage.
+
 @@toc { .main depth=3 }
 
 @@@ index
@@ -15,7 +19,7 @@ Lightbend Orchestration is a developer-centric suite of tools that helps you dep
 * [Kubernetes Development](kubernetes-development.md)
 * [Kubernetes Deployment](kubernetes-deployment.md)
 * [DC/OS Deployment](dcos-deployment.md)
-* [Features In-Depth](features.md)
+* [Features](features/features.md)
 * [Examples](examples.md)
 * [Release Notes](release-notes.md)
 

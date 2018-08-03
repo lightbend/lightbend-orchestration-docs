@@ -41,6 +41,12 @@ they have joined (or formed) a cluster. When combined with [Split Brain Resolver
  this gives you a very reliable mechanism for deploying Akka Cluster-based applications. These facilities are easily extensible by your application so that you can layer additional
 health and readiness checks on top of the provided ones.
 
-## Supported Platforms
+<link rel="stylesheet" type="text/css" href="css/custom.css">
 
-Currently, the tooling helps you leverage these features on Kubernetes and DC/OS (via Marathon).
+## Target platforms
+
+@@@ note
+Integration with both Kubernetes and DC/OS is **Incubating** at this point.
+@@@
+
+The tooling helps you leverage these features on Kubernetes and DC/OS (via Marathon).
