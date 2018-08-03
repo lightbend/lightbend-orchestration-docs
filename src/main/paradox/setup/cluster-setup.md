@@ -6,8 +6,8 @@ When deploying to Kubernetes, you'll first need to setup your Kubernetes cluster
 
 <link rel="stylesheet" type="text/css" href="css/custom.css">
 
-@@@ warning
-Integration with all deployment targets except for Minikube is **Incubating** at this point.
+@@@ note
+Integration with Kubernetes except for Minikube is **Incubating** at this point.
 @@@
 
 ### Minikube
@@ -55,6 +55,10 @@ kubectl get nodes
 ## DC/OS
 
 When deploying to DC/OS, you'll need to make sure that the `dcos` command line application is on your `PATH` and setup to point to your DC/OS cluster.
+
+@@@ note
+Integration with DC/OS is **Incubating** at this point.
+@@@
 
 ## DC/OS Vagrant
 

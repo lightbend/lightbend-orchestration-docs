@@ -4,8 +4,8 @@ Once you've installed the deployment tool, `reactive-cli`, you can use the `rp` 
 
 <link rel="stylesheet" type="text/css" href="css/custom.css">
 
-@@@ warning
-Integration with all deployment targets except for Minikube is **Incubating** at this point.
+@@@ note
+Integration with DC/OS is **Incubating** at this point.
 @@@
 
 ### Prerequisites

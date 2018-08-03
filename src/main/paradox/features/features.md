@@ -10,6 +10,6 @@
 * [Endpoint Detection and Declaration](endpoint-detection.md)
 * [Secrets](secrets.md)
 * [Service Location](service-location.md)
-* [Status](status.md)
+* [Application Health](application-health.md)
 
 @@@

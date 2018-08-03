@@ -47,6 +47,6 @@ health and readiness checks on top of the provided ones.
 
 The tooling helps you leverage these features on Kubernetes and DC/OS (via Marathon).
 
-@@@ warning
-Integration with all deployment targets except for Minikube is **Incubating** at this point.
+@@@ note
+Integration with both Kubernetes and DC/OS is **Incubating** at this point.
 @@@

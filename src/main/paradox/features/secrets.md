@@ -29,6 +29,6 @@ kubectl create secret generic my-secret --from-file=my-key=./path-to-my-secret-f
 
 <link rel="stylesheet" type="text/css" href="../css/custom.css">
 
-@@@ warning
-Integration with all deployment targets except for Minikube is **Incubating** at this point.
+@@@ note
+Integration with Kubernetes except for Minikube is **Incubating** at this point.
 @@@

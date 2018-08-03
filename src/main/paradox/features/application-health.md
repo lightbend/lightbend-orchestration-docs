@@ -1,4 +1,4 @@
-## Status
+## Application Health
 
 A status facility is provided by the tooling. When enabled, an additional route is added to the Akka Management HTTP
 server and the appropriate health and readiness checks are defined. By default, this route responds to
