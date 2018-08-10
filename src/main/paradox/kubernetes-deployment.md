@@ -13,8 +13,21 @@ Once you've installed the deployment tool, `reactive-cli`, you can use the `rp` 
 * [reactive-cli](https://github.com/lightbend/reactive-cli) installed
 * Applications built and published to a registry (production) or the local docker engine ([Minikube](https://kubernetes.io/docs/getting-started-guides/minikube/))
 * `kubectl` installed and configured to point to your registry
+*  Kubernetes cluster with correctly configured Role-Based Access Control ([RBAC](https://kubernetes.io/docs/admin/authorization/rbac/)). 
 
 > Using Minikube? Make sure you run `eval $(minikube docker-env)` before following the steps below. When you need your old environment, you can get it back with `eval $(minikube docker-env -u)`.
+
+### Role-based access control (RBAC)
+
+[Role-based access control](https://kubernetes.io/docs/admin/authorization/rbac/) (RBAC) is a method of controlling access to protected resources based on the roles of individual users. Many production clusters and recent versions of Minikube come with RBAC.
+
+Roles consists of sets of permissions for resources such as Pods and Secrets. Users are given roles using role bindings. Note that even a process running inside a pod belong to a special type of user called [Service Account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/).
+
+An application built using Lightbend Orchestration likely requires a permissio to list pods due to the design of current Akka Management Service Discovery. Create a file called `rbac.yml` with the YAML in [Discovery Method: Kubernetes API](https://developer.lightbend.com/docs/akka-management/current/discovery.html#role-based-access-control), and create `Role` and `RoldBinding` before running Lightbend Orchestration applications:
+
+```bash
+kubectl apply -f rbac.yml
+```
 
 ## Deployments
 
