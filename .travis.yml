@@ -1,0 +1,18 @@
+sudo: false
+dist: trusty
+language: scala
+jdk: oraclejdk8
+script: sbt paradox
+
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt
+
+before_cache:
+  - find $HOME/.ivy2/cache -name "ivydata-*.properties" -delete
+  - find $HOME/.sbt        -name "*.lock"               -delete
+
+notifications:
+  email:
+    on_success: never

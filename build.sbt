@@ -13,7 +13,6 @@ lazy val root = (project in file("."))
       "reactivecli"    -> "1.3.1"
     ),
     paradoxProperties in Paradox := (paradoxProperties in Compile).value,
-    paradoxTheme := Some("com.lightbend.paradox" % "paradox-theme-lightbend" % "0.2.7"),
     previewFixedPort := Some(8000),
     run := {
       previewSite.value
