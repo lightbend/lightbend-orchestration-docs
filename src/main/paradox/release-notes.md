@@ -73,6 +73,12 @@ sbt setting.
 
 ## reactive-lib
 
+### 0.9.1 - Friday, September 14, 2018
+
+* Fixe health check to report healthy during bootstrap
+* Make DNS parsing more robust
+* Fix ServiceLocator for host name lookup
+
 ### 0.9.0 - Wednesday, July 18, 2018
 
 * Update akka-management version to `0.17.0`
