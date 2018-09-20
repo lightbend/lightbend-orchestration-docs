@@ -45,4 +45,4 @@ When deploying applications that use Akka Cluster, you'll typically want them to
 use Akka Persistence features. Because of this, it is recommended that you avoid Blue/Green deployments and instead use
 the Canary (default) or Rolling deployment types
 
-  [akka-cluster-bootstrap]: https://developer.lightbend.com/docs/akka-management/current/bootstrap.html
+  [akka-cluster-bootstrap]: https://developer.lightbend.com/docs/akka-management/current/bootstrap/

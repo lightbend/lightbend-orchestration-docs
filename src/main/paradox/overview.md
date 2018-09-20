@@ -16,7 +16,7 @@ By using these tools, you can leverage the metadata that already exists in your 
 
 **Akka Cluster Formation**
 
-A service discovery-based approach to Akka Cluster formation that allows you to safely and efficiently form clusters in orchestrated environments. For more information on how this works, be sure to consult the [Akka Cluster Bootstrap](https://developer.lightbend.com/docs/akka-management/current/bootstrap.html) documentation.
+A service discovery-based approach to Akka Cluster formation that allows you to safely and efficiently form clusters in orchestrated environments. For more information on how this works, be sure to consult the [Akka Cluster Bootstrap](https://developer.lightbend.com/docs/akka-management/current/bootstrap/) documentation.
 
 **Endpoint Detection & Declaration**
 
