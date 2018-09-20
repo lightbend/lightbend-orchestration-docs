@@ -73,6 +73,10 @@ sbt setting.
 
 ## reactive-lib
 
+### 0.9.2 - Monday, September 17, 2018
+
+* Update akka-management version to `0.18.0`
+
 ### 0.9.1 - Friday, September 14, 2018
 
 * Fixe health check to report healthy during bootstrap
