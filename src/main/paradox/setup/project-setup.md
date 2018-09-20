@@ -82,7 +82,7 @@ The following command will build and deploy all of your services into your local
 * [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl)
 * [Minikube](https://github.com/kubernetes/minikube) v0.25.0 or later (Verify with `minikube version`)
 * [Helm](https://github.com/kubernetes/helm)
-* [reactive-cli](https://developer.lightbend.com/docs/reactive-platform-tooling/latest/cli-installation.html#install-the-cli) 1.1.0 or later (Verify with `rp version`)
+* [reactive-cli](cli-installation.html#install-the-cli) 1.1.0 or later (Verify with `rp version`)
 
 After installing the requisite software, run the following commands:
 

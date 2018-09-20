@@ -12,7 +12,7 @@ For macOS use Homebrew as follows:
 brew install lightbend/tools/reactive-cli
 ```
 
-See [CLI Installation](../cli-installation.md) for other operating systems.
+See [CLI Installation](../setup/cli-installation.html) for other operating systems.
 
 ## Minikube example
 
