@@ -2,7 +2,7 @@
 
 ### Prerequisites
 
-* [reactive-cli](../setup/cli-installation.md) installed
+* [reactive-cli](../setup/cli-installation.html) installed
 * Java
 * sbt
 
