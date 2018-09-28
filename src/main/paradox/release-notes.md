@@ -118,6 +118,12 @@ sbt setting.
 
 ## sbt-reactive-app
 
+### 1.5.0 - Wednesday, September 26, 2018
+
+* Supports non-Alpine bases images.
+* Upgraded automatic inclusion of reactive-lib to `0.9.2`.
+* Automated RBAC setup for minikube deploy.
+
 ### 1.3.1 - Wednesday, July 18, 2018
 
 * Upgraded automatic inclusion of reactive-lib to `0.9.0`.

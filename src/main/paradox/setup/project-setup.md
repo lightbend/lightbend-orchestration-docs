@@ -8,7 +8,7 @@ To setup your project, include and enable the [sbt-reactive-app](https://github.
 
 ### Prerequisites
 
-* [sbt](http://www.scala-sbt.org/) 0.13.13 (or later), 1.0.3 (or later)
+* [sbt](http://www.scala-sbt.org/) 1.2.3 (or later)
 * [Docker](https://www.docker.com/) for building and publishing images.
 
 ### Supported Versions:
@@ -39,7 +39,7 @@ addSbtPlugin("com.lightbend.rp" % "sbt-reactive-app" % "$sbtreactiveapp$")
 
 ```scala
 lazy val friendImpl = project("friend-impl")
-    .enablePlugins(LagomJava, SbtReactiveAppPlugin)
+  .enablePlugins(LagomJava, SbtReactiveAppPlugin)
 ...
 ```
 
