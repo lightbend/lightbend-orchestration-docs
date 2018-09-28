@@ -5,8 +5,12 @@ The Docker image is the deployment unit of choice and powers a wide variety of o
 1. Minimal base-image, `openjdk:alpine`, to reduce the size of the images produced.
 2. JVM's Docker CPU and memory limits are enabled, as discussed on this Oracle [Blog Post](https://blogs.oracle.com/java-platform-group/java-se-support-for-docker-cpu-and-memory-limits).
 
-Additionally, a convenience setting is provided, `alpinePackages`, which can be used to specify additional Alpine packages that should be installed when building the Docker image. For example, the following build configuration ensures `core-utils` is added to the Docker image:
+For sbt-reactive-app 1.5.0 and later, `rpPackagingDockerCommmands` setting can be used to append either additonal packages or to build on an alternative base image.
 
-```sbt
-alpinePackages += "coreutils"
-```
+### Additional Alpine packages
+
+@@snip [build.sbt](../../../sbt-test/orchestration/alpine/build.sbt) { #alpine_example }
+
+### Debian slim example
+
+@@snip [build.sbt](../../../sbt-test/orchestration/slim/build.sbt) { #slim_example }
