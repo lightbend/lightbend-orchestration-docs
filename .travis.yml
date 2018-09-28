@@ -1,8 +1,11 @@
-sudo: false
+sudo: required
 dist: trusty
 language: scala
 jdk: oraclejdk8
 script: sbt scripted paradox
+
+services:
+  - docker
 
 cache:
   directories:
