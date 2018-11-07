@@ -10,7 +10,7 @@ behavior.
 ```bash
 # Install Helm and add the Lightbend repository
 helm init
-helm repo add lightbend-helm-charts https://lightbend.github.io/helm-charts
+helm repo add lightbend-helm-charts https://repo.lightbend.com/helm-charts
 helm update
 
 # Install the reactive-sandbox
