@@ -16,6 +16,11 @@ sbt setting.
 
 ## reactive-cli
 
+### 1.3.2 - Friday, December 7, 2018
+
+* Improvements in the authentication with docker registries, in particular with those
+  that only support basic authentication.
+
 ### 1.3.0 - Monday, July 16, 2018
 
 * Support `annotations` label in docker images created by sbt-reactive-app. Kubernetes pods will
