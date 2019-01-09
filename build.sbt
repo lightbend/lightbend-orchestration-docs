@@ -1,9 +1,9 @@
 ThisBuild / organization := "com.lightbend"
 
-lazy val exampleScalaVersion = "2.12.7"
-lazy val sbtreactiveappVersion = "1.5.0"
-lazy val reactiveLibVersion = "0.9.2"
-lazy val reactiveCliVersion = "1.3.1"
+lazy val exampleScalaVersion = "2.12.8"
+lazy val sbtreactiveappVersion = "1.6.0"
+lazy val reactiveLibVersion = "1.6.0"
+lazy val reactiveCliVersion = "1.6.0"
 
 lazy val root = (project in file("."))
   .enablePlugins(ParadoxPlugin, ParadoxSitePlugin, ScriptedPlugin)
