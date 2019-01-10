@@ -9,7 +9,7 @@ sbt setting.
 @@@vars
 | Project                                                                     |  Version |
 |-----------------------------------------------------------------------------|----------|
+| [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | $sbtreactiveapp$   |
 | [reactive-cli](https://github.com/lightbend/reactive-cli/releases)          | $reactivecli$  |
 | [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | $reactivelib$  |
-| [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app/releases)  | $sbtreactiveapp$   |
 @@@
