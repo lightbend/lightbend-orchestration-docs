@@ -1,7 +1,7 @@
 ThisBuild / organization := "com.lightbend"
 
 lazy val exampleScalaVersion = "2.12.8"
-lazy val sbtreactiveappVersion = "1.6.0"
+lazy val sbtreactiveappVersion = "1.6.1"
 lazy val reactiveLibVersion = "1.6.0"
 lazy val reactiveCliVersion = "1.6.0"
 
