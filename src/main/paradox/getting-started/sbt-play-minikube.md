@@ -77,7 +77,7 @@ lazy val root = (project in file("."))
 Add the following to `build.sbt` to declare an endpoint:
 
 ```scala
-endpoints := HttpEndpoint(
+rpEndpoints := HttpEndpoint(
   name = "http",
   ingress = new HttpIngress(
     ingressPorts = Vector(80, 443),

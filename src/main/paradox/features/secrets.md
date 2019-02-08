@@ -1,7 +1,6 @@
 ## Secrets
 
-A non-blocking secrets API is available for Kubernetes. The secrets must be declared in the `build.sbt` file, and then they can be accessed at runtime using the provided libraries. This feature will be made available for DC/OS at a later date.
-
+A non-blocking secrets API is available for Kubernetes. The secrets must be declared in the `build.sbt` file, and then they can be accessed at runtime using the provided libraries.
 #### Project
 
 For example, given the following `build.sbt` setting:
@@ -10,14 +9,8 @@ For example, given the following `build.sbt` setting:
 secrets += Secret("my-secret", "my-key")
 ```
 
-A developer can access this setting at runtime:
-
-```scala
-import com.lightbend.rp.secrets.scaladsl.SecretReader
-
-val secret: Future[Option[ByteString]] =
-  SecretReader.get(name = "my-secret", key = "my-key")
-```
+A developer can access this setting at runtime by reading from the file `/rp/secrets/%name%/%key%` where `%name%`
+is transformed to lowercase, and `-` for non-alphanum instead.
 
 #### Kubernetes
 
