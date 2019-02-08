@@ -14,6 +14,69 @@ sbt setting.
 | [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | $reactivelib$  |
 @@@
 
+## 1.7.0
+
+In general, the theme of Lightbend Orchestration 1.7.0 is to remove unnecessary features to make the deployment leaner and more manageable. 1.7.0 runtime is based on Akka 2.5.20 and Akka Management 0.20.0. The following illustrations show the pieces included in Orchestration’s build and runtime.
+
+### Secure Docker image building with sbt-native-packager 1.3.17
+
+For building Docker images, Lightbend Orchestration depends on sbt-native-packager, an sbt plugin maintained by Nepomuk "Muki" Seiler. To improve the security around file permissions and Red Hat OpenShift compatibility, Lightbend Tooling team has contributed a few enhancements to sbt-native-packager.
+
+First, `dockerPermissionStrategy` was added to decide how file permissions are set for the working directory inside the Docker image. The default `DockerPermissionStrategy.MultiStage` strategy uses multi-stage Docker build to call chmod ahead of time. This avoids extra Docker layer overhead.
+
+Next, `dockerChmodType` setting was added to specify what file permissions are set for the working directory. By default, it uses `DockerChmodType.UserGroupReadExecute`, which prevents the working directory to be writable. If you want your application to write a file, the following setting can be used to opt-in:
+
+```scala
+import com.typesafe.sbt.packager.docker.DockerChmodType
+dockerChmodType := DockerChmodType.UserGroupWriteExecute
+```
+
+See [sbt-native-packager 1.3.16](https://github.com/sbt/sbt-native-packager/releases/tag/v1.3.16) release note for more details.
+
+### YAML file generation for Akka Cluster Bootstrapping using Kubernetes API
+
+The main feature of Lightbend Orchestration is the automatic generation of Kubernetes configuration  (YAML) files.
+
+For Akka Cluster Bootstrapping, Lightbend Orchestration generates YAML files using Kubernetes API as the discovery method. Starting with Lightbend Orchestration 1.7.0, we will use a specialized label `akka.lightbend.com/service-name`, which denotes the Akka Cluster to join when a pod comes up.
+
+- The value of the this label will default to either the app name or the app name + version depending on the deployment type.
+- Deployment pods are labeled with `"akka.lightbend.com/service-name": "friendimpl"` etc.
+- You can override the label selector as follows: `-Dakka.discovery.kubernetes-api.pod-label-selector=akka.lightbend.com/service-name=%s` (as opposed to using `app=%s`).
+- You can override the  effective name  as follows: `-Dakka.management.cluster.bootstrap.contact-point-discovery.effective-name=friendimpl` etc.
+
+### YAML file generation: Removal of automatic port assignment
+
+Previous releases of Lightbend Orchestration automatically assigned various port numbers from port 10000 in part by overriding your `application.config` file. Lightbend Orchestration 1.7.0 removes this feature, and respects the port number declared in your your `application.config`. Otherwise, default port numbers will be used such as port 9000 for Play. This also allows us to remove `RP_ENDPOINT_*` environment variables, generally simplifying the generated YAML file.
+
+**Note**: This also means that your deployed service will expose different port number (for example 9000) instead of 10000.
+
+### YAML file generation for Akka Cluster Bootstrapping using DNS
+
+Optionally, Lightbend Orchestration 1.7.0 adds **experimental** support to generate Kubernetes configuration for Akka Cluster Bootstrapping using DNS as the discovery method.
+
+If you want to use DNS, pass `--discovery-method=akka-dns` to the `rp` command line. [cli#195][cli195]
+
+### Rename of sbt-reactive-app key names
+
+All key names are renamed to prefix with `rp` and camel cased to comply with [Plugins Best Practices][best-practice]. For instance, `endpoints` setting will now be `rpEndpoints`, and `deploy` task will be `rpDeploy`. The old key names are deprecated and will be removed in the future. [sbt-reactive-app#145][sbt-reactive-app145]
+
+### Deprecation of SecretReader
+
+In the effort to reduce runtime dependencies, SecretReader was deprecated. Read from the file `/rp/secrets/%name%/%key%` where `%name%` is transformed to lowercase, and `-` for non-alphanum instead. [lib#118][lib118]
+
+### Other bug fix
+
+- Fixes missing `protocol` when UDP endpoint is selected. [cli#196][cli196]
+
+  [cli195]: https://github.com/lightbend/reactive-cli/pull/195
+  [cli196]: https://github.com/lightbend/reactive-cli/pull/196
+  [lib118]: https://github.com/lightbend/reactive-lib/pull/118
+  [lib119]: https://github.com/lightbend/reactive-lib/pull/119
+  [sbt-reactive-app145]: https://github.com/lightbend/sbt-reactive-app/pull/145
+  [best-practice]: https://www.scala-sbt.org/1.x/docs/Plugins-Best-Practices.html
+
+
+
 ## sbt-reactive-app 1.6.1
 
 - Fixes binary compatibility issue with sbt-native-packager 1.3.15 adopted by Play 2.6.20+ and Lagom 1.4.10. [#169][sbt-reactive-app169] by [@ignasi35][@ignasi35]

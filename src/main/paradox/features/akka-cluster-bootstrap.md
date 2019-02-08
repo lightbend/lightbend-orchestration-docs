@@ -45,4 +45,13 @@ When deploying applications that use Akka Cluster, you'll typically want them to
 use Akka Persistence features. Because of this, it is recommended that you avoid Blue/Green deployments and instead use
 the Canary (default) or Rolling deployment types
 
+
+### Akka Cluster Bootstrap using DNS
+
+To use DNS for Akka Cluster Bootstrap instead of Kubernetes API, pass `--discovery-method` option as follows:
+
+```bash
+rp generate-kubernetes-resources my-org/my-app:0.1.0 --discovery-method=akka-dns
+```
+
   [akka-cluster-bootstrap]: https://developer.lightbend.com/docs/akka-management/current/bootstrap/

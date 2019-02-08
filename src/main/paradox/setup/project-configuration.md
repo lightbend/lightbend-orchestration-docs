@@ -82,18 +82,15 @@ Your application may require that you manually enable or disable the various set
 
 | Name / Type                                                              | Description                                           |
 |--------------------------------------------------------------------------|-------------------------------------------------------|
-| appName                    <br/><br/> `String`                           | Specifies the service name. Defaults to the sbt project's name for regular projects. Defaults to the Lagom service name for Lagom projects |
-| annotations                <br/><br/> `Map[String, String]`              | Key/value pairs to export as annotations. |
-| enableAkkaClusterBootstrap <br/><br/> `Boolean`                          | Specifies whether Akka Cluster Bootstrapping should be enabled. When enabled, an Akka extension will be enabled that will automatically form your cluster using service discovery.  |
-| enableCommon               <br/><br/> `Boolean`                          | Specifies whether basic features like Platform detection should be enabled |
-| enablePlayHttpBinding      <br/><br/> `Boolean`                          | Specifies whether automatic HTTP port binding for Play & Lagom should be enabled|
-| enableSecrets              <br/><br/> `Boolean`                          | Specifies whether secrets library should be enabled |
-| endpoints                  <br/><br/> `Seq[Endpoint]`                    | Declare the endpoints that should be made available for your service |
-| environmentVariables       <br/><br/> `Map[String, EnvironmentVariable]` | Declare values that should be bound to environment variables (application runtime). Note that additional environment variables can also be set during deploy time using the `rp` command. |
-| httpIngressHosts           <br/><br/> `Seq[String]`                      | For automatic HTTP ingress declarations, specifies the host used for ingress. |
-| httpIngressPorts           <br/><br/> `Seq[Int]`                         | For automatic HTTP ingress declarations, specifies the port used for ingress. |
-| prependRpConf              <br/><br/> `String`                           | All configuration files on the class path with this name will be prepended to the applications `application.conf`. This is the mechanism used to automatically configure various dependencies. To disable this, set this setting to `None` |
-| startScriptLocation        <br/><br/> `String`                           | A custom start-script is provided and bundles with the application. Change its location with this setting. |
+| rpAppName                    <br/><br/> `String`                           | Specifies the service name. Defaults to the sbt project's name for regular projects. Defaults to the Lagom service name for Lagom projects |
+| rpAnnotations                <br/><br/> `Map[String, String]`              | Key/value pairs to export as annotations. |
+| rpEnableAkkaClusterBootstrap <br/><br/> `Boolean`                          | Specifies whether Akka Cluster Bootstrapping should be enabled. When enabled, an Akka extension will be enabled that will automatically form your cluster using service discovery.  |
+| rpEnableCommon               <br/><br/> `Boolean`                          | Specifies whether basic features like Platform detection should be enabled |
+| rpEnableSecrets              <br/><br/> `Boolean`                          | Specifies whether secrets library should be enabled |
+| rpEndpoints                  <br/><br/> `Seq[Endpoint]`                    | Declare the endpoints that should be made available for your service |
+| rpEnvironmentVariables       <br/><br/> `Map[String, EnvironmentVariable]` | Declare values that should be bound to environment variables (application runtime). Note that additional environment variables can also be set during deploy time using the `rp` command. |
+| rpHttpIngressHosts           <br/><br/> `Seq[String]`                      | For automatic HTTP ingress declarations, specifies the host used for ingress. |
+| rpHttpIngressPorts           <br/><br/> `Seq[Int]`                         | For automatic HTTP ingress declarations, specifies the port used for ingress. |
 
 ### sbt Native Packager
 

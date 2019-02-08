@@ -88,7 +88,7 @@ After installing the requisite software, run the following commands:
 
 ```bash
 minikube start --memory 6000
-sbt "deploy minikube"
+sbt "rpDeploy minikube"
 echo "http://$(minikube ip)"
 ```
 

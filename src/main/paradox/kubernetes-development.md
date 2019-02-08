@@ -26,7 +26,7 @@ applications. You can also run the task on a specific subproject if you only wis
 For example, see the following (trimmed) output below:
 
 ```bash
-sbt 'deploy minikube'
+sbt 'rpDeploy minikube'
 [info] Loading global plugins from /home/longshorej/.sbt/0.13/plugins
 [info] Loading project definition from /home/longshorej/work/lightbend/online-auction-scala/project
 [info] Set current project to online-auction-scala (in build file:/home/longshorej/work/lightbend/online-auction-scala/)
@@ -63,12 +63,12 @@ the Reactive Sandbox installation, and define additional `rp` arguments.
 
 | Name / Type                                                                      | Description                                           |
 |----------------------------------------------------------------------------------|-------------------------------------------------------|
-| deployMinikubeReactiveSandboxExternalServices<br/><br/> `Map[String, String]`    | A map of service names to service lookup addresses. This will be provided as an argument to rp for resources that are generated when running deploy minikube. Note that this map will only be added if reactive sandbox is enabled.
-| deployMinikubeAdditionalExternalServices <br/><br/> `Map[String, String]`        | An additional map of service names to service lookup addresses. These will always be provided to rp and take precedence over the Reactive Sandbox addresses.
-| deployMinikubeAkkaClusterBootstrapContactPoints               <br/><br/> `Int`   | When deploying applications with Akka Cluster Bootstrap enabled, the services will initially be started with this many contact points / replicas. Defaults to 1
-| deployMinikubeEnableReactiveSandbox      <br/><br/> `Boolean`                    | If enabled, Reactive Sandbox (a Docker image containing Cassandra, Kafka, ZooKeeper, Elasticsearch) will be deployed with this app.
-| deployMinikubePlayHostAllowedProperty              <br/><br/> `String`           | If deploying a Play application, this property will be set to the Minikube IP.
-| deployMinikubePlayHttpSecretKeyProperty                  <br/><br/> `String`     | If deploying a Play application, this property will be set to the value specified below.
-| deployMinikubePlayHttpSecretKeyValue       <br/><br/> `String`                   | If deploying a Play application, this property will be set to the value specified above.
-| deployMinikubeReactiveSandboxCqlStatements           <br/><br/> `Seq[String]`    | Set this setting (build-wide, i.e. `deployMinikubeReactiveSandboxCqlStatements in ThisBuild` := ...) to a sequence of CQL statements that should be executed against Cassandra when the Reactive Sandbox is installed.
-| deployMinikubeRpArguments           <br/><br/> `Seq[String]`                     | Additional arguments to invoke rp with for this app.
+| rpDeployMinikubeReactiveSandboxExternalServices<br/><br/> `Map[String, String]`    | A map of service names to service lookup addresses. This will be provided as an argument to rp for resources that are generated when running deploy minikube. Note that this map will only be added if reactive sandbox is enabled.
+| rpDeployMinikubeAdditionalExternalServices <br/><br/> `Map[String, String]`        | An additional map of service names to service lookup addresses. These will always be provided to rp and take precedence over the Reactive Sandbox addresses.
+| rpDeployMinikubeAkkaClusterBootstrapContactPoints               <br/><br/> `Int`   | When deploying applications with Akka Cluster Bootstrap enabled, the services will initially be started with this many contact points / replicas. Defaults to 1
+| rpDeployMinikubeEnableReactiveSandbox      <br/><br/> `Boolean`                    | If enabled, Reactive Sandbox (a Docker image containing Cassandra, Kafka, ZooKeeper, Elasticsearch) will be deployed with this app.
+| rpDeployMinikubePlayHostAllowedProperty              <br/><br/> `String`           | If deploying a Play application, this property will be set to the Minikube IP.
+| rpDeployMinikubePlayHttpSecretKeyProperty                  <br/><br/> `String`     | If deploying a Play application, this property will be set to the value specified below.
+| rpDeployMinikubePlayHttpSecretKeyValue       <br/><br/> `String`                   | If deploying a Play application, this property will be set to the value specified above.
+| rpDeployMinikubeReactiveSandboxCqlStatements           <br/><br/> `Seq[String]`    | Set this setting (build-wide, i.e. `deployMinikubeReactiveSandboxCqlStatements in ThisBuild` := ...) to a sequence of CQL statements that should be executed against Cassandra when the Reactive Sandbox is installed.
+| rpDeployMinikubeRpArguments           <br/><br/> `Seq[String]`                     | Additional arguments to invoke rp with for this app.
