@@ -1,6 +1,6 @@
 # Kubernetes Development
 
-[sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app) includes an sbt task, `deploy minikube`, that can be
+[sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app) includes an sbt task, `rpDeploy minikube`, that can be
 used to simplify running your application in your local Minikube. This is especially useful as a development tool
 to get a quick feedback on modifications as you develop your applications.
 
@@ -17,7 +17,7 @@ development-grade (i.e. don't use it in production) installations of Cassandra, 
 
 ### Getting Started
 
-To use this feature, launch the sbt console and type `deploy minikube`. This will run the task on all aggregated
+To use this feature, launch the sbt console and type `rpDeploy minikube`. This will run the task on all aggregated
 subprojects. The task will install Helm and the Reactive Sandbox (if required) and install (or replace) all of the
 applications. You can also run the task on a specific subproject if you only wish to deploy that application.
 
