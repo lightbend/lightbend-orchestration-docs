@@ -74,7 +74,7 @@ Later in the documentation we'll cover how you can then generate Kubernetes and 
 
 > The following feature is currently only available for Kubernetes.
 
-Lightbend Orchestration provides an sbt task, `deploy minikube`, that makes it easy for developers to deploy their application to their own local Kubernetes cluster.
+Lightbend Orchestration provides an sbt task, `rpDeploy minikube`, that makes it easy for developers to deploy their application to their own local Kubernetes cluster.
 
 The following command will build and deploy all of your services into your local Kubernetes cluster. You'll need to ensure that the following software is installed:
 

@@ -113,7 +113,7 @@ In the sbt shell type the following:
 
 ```
 compile
-deploy minikube
+rpDeploy minikube
 ```
 
 If successful you should see an output like the following:
