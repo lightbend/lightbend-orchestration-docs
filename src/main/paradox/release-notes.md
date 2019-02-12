@@ -14,9 +14,23 @@ sbt setting.
 | [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | $reactivelib$  |
 @@@
 
+## 1.7.1
+
+### sbt-native-packager 1.3.18
+
+sbt-reactive-app 1.7.1 updates its dependency to sbt-native-packager 1.3.18 to bring in some bug fixes around Docker image building.
+
+### Other fixes
+
+- Fixes `-Dplay.server.pidfile.path=/dev/null` generation. [cli#201][cli201]
+- Default `rp` to `--registry-use-local`. `--registry-disable-local` is added to disable it. [cli#203][cli203]
+
+  [cli201]: https://github.com/lightbend/reactive-cli/pull/201
+  [cli203]: https://github.com/lightbend/reactive-cli/pull/203
+
 ## 1.7.0
 
-In general, the theme of Lightbend Orchestration 1.7.0 is to remove unnecessary features to make the deployment leaner and more manageable. 1.7.0 runtime is based on Akka 2.5.20 and Akka Management 0.20.0. The following illustrations show the pieces included in Orchestration’s build and runtime.
+In general, the theme of Lightbend Orchestration 1.7.0 is to remove unnecessary features to make the deployment leaner and more manageable. 1.7.0 runtime is based on Akka 2.5.20 and Akka Management 0.20.0.
 
 ### Secure Docker image building with sbt-native-packager 1.3.17
 
@@ -74,8 +88,6 @@ In the effort to reduce runtime dependencies, SecretReader was deprecated. Read 
   [lib119]: https://github.com/lightbend/reactive-lib/pull/119
   [sbt-reactive-app145]: https://github.com/lightbend/sbt-reactive-app/pull/145
   [best-practice]: https://www.scala-sbt.org/1.x/docs/Plugins-Best-Practices.html
-
-
 
 ## sbt-reactive-app 1.6.1
 
