@@ -9,6 +9,6 @@ lazy val root = (project in file("."))
   .settings(
     name := "alpine-packages",
     rpPackagingDockerCommmands := Vector(
-      Cmd("RUN", "/sbin/apk", "add", "--no-cache", "bash", "coreutils"))
+      Cmd("RUN", "/sbin/apk", "add", "--no-cache", "bash", "coreutils", "shadow"))
   )
 // #alpine_example

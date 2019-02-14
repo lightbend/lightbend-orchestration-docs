@@ -77,14 +77,19 @@ lazy val root = (project in file("."))
 Add the following to `build.sbt` to declare an endpoint:
 
 ```scala
-rpEndpoints := HttpEndpoint(
-  name = "http",
-  ingress = new HttpIngress(
-    ingressPorts = Vector(80, 443),
-    hosts = Vector.empty,
-    paths = Vector("/")
-  )
-) :: Nil
+rpHttpIngressPaths := Seq("/")
+```
+
+### conf/application.conf
+
+Create `conf/application.conf` with the following content:
+
+```
+play.filters.hosts {
+  allowed = ["."]
+}
+# https://www.playframework.com/documentation/latest/Configuration
+play.http.secret.key="something"
 ```
 
 #### Start Minikube
@@ -119,40 +124,71 @@ rpDeploy minikube
 If successful you should see an output like the following:
 
 ```
-[info] Sending build context to Docker daemon  40.64MB
-[info] Step 1/11 : FROM openjdk:8-jre-alpine
-[info]  ---> ccfb0c83b2fe
-[info] Step 2/11 : RUN /sbin/apk add --no-cache bash
+[info] role "pod-reader" deleted
+[info] rolebinding "read-pods" deleted
+[info] role "pod-reader" created
+[info] rolebinding "read-pods" created
+[info] Sending build context to Docker daemon   39.8MB
+[info] Step 1/18 : FROM openjdk:8-jre-alpine as stage0
+[info]  ---> 1b46cc2ba839
+[info] Step 2/18 : WORKDIR /opt/docker
 [info]  ---> Using cache
-[info]  ---> a7c9d4ccf2bb
-[info] Step 3/11 : RUN id -g daemon || addgroup daemon
+[info]  ---> 09025e8e896f
+[info] Step 3/18 : COPY opt /opt
+[info]  ---> 41910154fdb0
+[info] Step 4/18 : USER root
+[info]  ---> Running in 3ab0acf54f8a
+[info] Removing intermediate container 3ab0acf54f8a
+[info]  ---> 0dab44ea6534
+[info] Step 5/18 : RUN ["chmod", "u+x,g+x", "/opt/docker/bin/rp-start"]
+[info]  ---> Running in dbd18c8e426c
+[info] Removing intermediate container dbd18c8e426c
+[info]  ---> 05ded6c3ef75
+[info] Step 6/18 : RUN ["chmod", "u+x,g+x", "/opt/docker/bin/hello-play"]
+[info]  ---> Running in fe539093a368
+[info] Removing intermediate container fe539093a368
+[info]  ---> f97385d94c10
+[info] Step 7/18 : RUN ["chmod", "-R", "u=rX,g=rX", "/opt/docker"]
+[info]  ---> Running in aad61c2a021d
+[info] Removing intermediate container aad61c2a021d
+[info]  ---> 56e5614e7ceb
+[info] Step 8/18 : RUN ["chmod", "u+x,g+x", "/opt/docker/bin/hello-play"]
+[info]  ---> Running in 96c592352792
+[info] Removing intermediate container 96c592352792
+[info]  ---> 32e25c132e35
+[info] Step 9/18 : FROM openjdk:8-jre-alpine
+[info]  ---> 1b46cc2ba839
+[info] Step 10/18 : RUN /sbin/apk add --no-cache bash shadow
 [info]  ---> Using cache
-[info]  ---> 85158e8f22cc
-[info] Step 4/11 : RUN id -u daemon || adduser daemon daemon
+[info]  ---> b326fe4140ff
+[info] Step 11/18 : USER root
 [info]  ---> Using cache
-[info]  ---> 25cd7385ab4c
-[info] Step 5/11 : WORKDIR /opt/docker
+[info]  ---> b66a68b58e10
+[info] Step 12/18 : RUN id -u demiourgos728 2> /dev/null || useradd --system --create-home --uid 1001 --gid 0 demiourgos728
 [info]  ---> Using cache
-[info]  ---> bc6a3c77f060
-[info] Step 6/11 : ADD --chown=daemon:daemon opt /opt
+[info]  ---> b497e918678b
+[info] Step 13/18 : WORKDIR /opt/docker
 [info]  ---> Using cache
-[info]  ---> aa5a2b6b1aef
-[info] Step 7/11 : USER daemon
-[info]  ---> Using cache
-[info]  ---> 1007538ab33a
-[info] Step 8/11 : ENTRYPOINT []
-[info]  ---> Using cache
-[info]  ---> 67a009f36ddd
-[info] Step 9/11 : CMD []
-[info]  ---> Using cache
-[info]  ---> 6f9152dfd589
-[info] Step 10/11 : COPY --chown=daemon:daemon rp-start /rp-start
-[info]  ---> Using cache
-[info]  ---> 388b9495fa0b
-[info] Step 11/11 : LABEL com.lightbend.rp.app-name="hello-play" com.lightbend.rp.applications.0.name="default" com.lightbend.rp.applications.0.arguments.0="/rp-start" com.lightbend.rp.applications.0.arguments.1="bin/hello-play" com.lightbend.rp.app-version="1.0-SNAPSHOT" com.lightbend.rp.app-type="play" com.lightbend.rp.config-resource="rp-application.conf" com.lightbend.rp.modules.akka-cluster-bootstrapping.enabled="false" com.lightbend.rp.modules.akka-management.enabled="false" com.lightbend.rp.modules.common.enabled="true" com.lightbend.rp.modules.play-http-binding.enabled="true" com.lightbend.rp.modules.secrets.enabled="false" com.lightbend.rp.modules.service-discovery.enabled="false" com.lightbend.rp.modules.status.enabled="false" com.lightbend.rp.endpoints.0.name="http" com.lightbend.rp.endpoints.0.protocol="http" com.lightbend.rp.endpoints.0.ingress.0.type="http" com.lightbend.rp.endpoints.0.ingress.0.ingress-ports.0="80" com.lightbend.rp.endpoints.0.ingress.0.ingress-ports.1="443" com.lightbend.rp.endpoints.0.ingress.0.paths.0="/" com.lightbend.rp.sbt-reactive-app-version="1.3.1"
-[info]  ---> Using cache
-[info]  ---> c44b60fc24d7
-[info] Successfully built c44b60fc24d7
+[info]  ---> 67f1ad3cb366
+[info] Step 14/18 : COPY --from=stage0 --chown=demiourgos728:root /opt/docker /opt/docker
+[info]  ---> 257b8e7fadbf
+[info] Step 15/18 : USER 1001
+[info]  ---> Running in 5dde95c62cf9
+[info] Removing intermediate container 5dde95c62cf9
+[info]  ---> 21bec7c58c83
+[info] Step 16/18 : ENTRYPOINT ["/opt/docker/bin/rp-start", "/opt/docker/bin/hello-play"]
+[info]  ---> Running in 334b03a2d1b7
+[info] Removing intermediate container 334b03a2d1b7
+[info]  ---> 4fc3c29ec268
+[info] Step 17/18 : CMD []
+[info]  ---> Running in 85e135d0934d
+[info] Removing intermediate container 85e135d0934d
+[info]  ---> 389dc57f9a03
+[info] Step 18/18 : LABEL com.lightbend.rp.app-name="hello-play" com.lightbend.rp.applications.0.name="default" com.lightbend.rp.applications.0.arguments.0="/opt/docker/bin/rp-start" com.lightbend.rp.applications.0.arguments.1="bin/hello-play" com.lightbend.rp.app-version="1.0-SNAPSHOT" com.lightbend.rp.app-type="basic" com.lightbend.rp.config-resource="rp-application.conf" com.lightbend.rp.modules.akka-cluster-bootstrapping.enabled="false" com.lightbend.rp.modules.akka-management.enabled="false" com.lightbend.rp.modules.common.enabled="true" com.lightbend.rp.modules.secrets.enabled="false" com.lightbend.rp.modules.service-discovery.enabled="false" com.lightbend.rp.modules.status.enabled="false" com.lightbend.rp.endpoints.0.name="http" com.lightbend.rp.endpoints.0.protocol="http" com.lightbend.rp.endpoints.0.port="9000" com.lightbend.rp.endpoints.0.ingress.0.type="http" com.lightbend.rp.endpoints.0.ingress.0.ingress-ports.0="80" com.lightbend.rp.endpoints.0.ingress.0.ingress-ports.1="443" com.lightbend.rp.endpoints.0.ingress.0.paths.0="/" com.lightbend.rp.sbt-reactive-app-version="1.7.1"
+[info]  ---> Running in 7422665243f3
+[info] Removing intermediate container 7422665243f3
+[info]  ---> 70d6df4c05a4
+[info] Successfully built 70d6df4c05a4
 [info] Successfully tagged hello-play:1.0-SNAPSHOT
 [info] Built image hello-play:1.0-SNAPSHOT
 [info] deployment "hello-play-v1-0-snapshot" deleted
