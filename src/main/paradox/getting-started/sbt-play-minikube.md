@@ -77,14 +77,19 @@ lazy val root = (project in file("."))
 Add the following to `build.sbt` to declare an endpoint:
 
 ```scala
-rpEndpoints := HttpEndpoint(
-  name = "http",
-  ingress = new HttpIngress(
-    ingressPorts = Vector(80, 443),
-    hosts = Vector.empty,
-    paths = Vector("/")
-  )
-) :: Nil
+rpHttpIngressPaths := Seq("/")
+```
+
+### conf/application.conf
+
+Create `conf/application.conf` with the following content:
+
+```
+play.filters.hosts {
+  allowed = ["."]
+}
+# https://www.playframework.com/documentation/latest/Configuration
+play.http.secret.key="something"
 ```
 
 #### Start Minikube
