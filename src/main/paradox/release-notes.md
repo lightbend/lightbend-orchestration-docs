@@ -14,6 +14,18 @@ sbt setting.
 | [reactive-lib](https://github.com/lightbend/reactive-lib/releases)          | $reactivelib$  |
 @@@
 
+## sbt-reactive-app 1.7.3
+
+- Fixes Play 2.7 endpoint detection [sbt-reactive-app#184][sbt-reactive-app184]
+- Fixes Lagom http port detection [sbt-reactive-app#182][sbt-reactive-app182]
+- Fixes rp-application.conf becoming blank when deploying Play without reactive-lib modules [sbt-reactive-app#180][sbt-reactive-app180]
+- Makes unused `ingressPorts` optional in `HttpIngress` [sbt-reactive-app#181][sbt-reactive-app181]
+
+  [sbt-reactive-app184]: https://github.com/lightbend/sbt-reactive-app/pull/184
+  [sbt-reactive-app182]: https://github.com/lightbend/sbt-reactive-app/pull/182
+  [sbt-reactive-app181]: https://github.com/lightbend/sbt-reactive-app/pull/181
+  [sbt-reactive-app180]: https://github.com/lightbend/sbt-reactive-app/pull/180
+
 ## 1.7.1
 
 ### sbt-native-packager 1.3.18
