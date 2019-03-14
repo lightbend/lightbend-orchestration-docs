@@ -23,7 +23,7 @@ Once you've installed the deployment tool, `reactive-cli`, you can use the `rp` 
 
 Roles consists of sets of permissions for resources such as Pods and Secrets. Users are given roles using role bindings. Note that even a process running inside a pod belong to a special type of user called [Service Account](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/).
 
-An application built using Lightbend Orchestration likely requires a permissio to list pods due to the design of current Akka Management Service Discovery. Create a file called `rbac.yml` with the YAML in [Discovery Method: Kubernetes API](https://developer.lightbend.com/docs/akka-management/current/discovery.html#role-based-access-control), and create `Role` and `RoldBinding` before running Lightbend Orchestration applications:
+An application that uses Akka Cluster with Lightbend Orchestration requires permission to list pods in Kubernetes. Create a file called `rbac.yml` with the YAML in [Discovery Method: Kubernetes API](https://developer.lightbend.com/docs/akka-management/current/discovery/kubernetes.html#role-based-access-control), and create `Role` and `RoleBinding` before running Lightbend Orchestration applications:
 
 ```bash
 kubectl apply -f rbac.yml
