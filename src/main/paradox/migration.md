@@ -29,7 +29,7 @@ Akka Management now provides built-in [health checks](https://developer.lightben
 
 Projects that used Lightbend Orchestration with sbt to build Docker images can switch to the popular [SBT Native Packager](https://sbt-native-packager.readthedocs.io/en/latest/) plugin that was used as its underlying implementation. This plugin is already available in all sbt-based Play and Lagom projects and offers highly customizable support for building [Docker images](https://sbt-native-packager.readthedocs.io/en/latest/formats/docker.html). You won't get the additional Docker image labels that were added automatically by the sbt-reactive-app component of Lightbend Orchestration, but these can be added back if desired by configuring the [`dockerLabels` setting](https://sbt-native-packager.readthedocs.io/en/latest/formats/docker.html#environment-settings).
 
-Alternatively, you can use any other method you choose to build Docker images for your services, including [`Dockerfile`](https://docs.docker.com/engine/reference/builder/) with [`docker build`](https://docs.docker.com/engine/reference/commandline/build/), [Source-to-Image](https://github.com/openshift/source-to-image), [Jib](https://github.com/GoogleContainerTools/jib), or many others.
+Alternatively, you can use any other method you choose to build Docker images for your services --- there are many third-party tools available in the ecosystem.
 
 ## Other features
 
