@@ -1,5 +1,7 @@
 ## Service Location
 
+@@include[deprecation.md](deprecation.md)
+
 Service location facilities are provided by the tooling. This allows you to seamlessly discover other services without having to worry about how that maps to DNS addresses or how to asynchronously perform DNS lookups. To find other services, you simply need to specify the service and endpoint names. If the services are in a different namespace, that can also be specified.
 
 ### Configuration

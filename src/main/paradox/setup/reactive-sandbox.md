@@ -1,5 +1,7 @@
 # Reactive Sandbox
 
+@@include[deprecation.md](deprecation.md)
+
 Lightbend Orchestration is integrated with Lightbend's [Reactive Sandbox](https://github.com/lightbend/reactive-sandbox)
 which provides development-grade (i.e. don't use it in production) installations of Cassandra, Elasticsearch, Kafka, and ZooKeeper.
 

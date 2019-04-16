@@ -1,5 +1,7 @@
 # Building & Publishing
 
+@@include[deprecation.md](deprecation.md)
+
 ## sbt
 
 Once you've setup your build, you'll need to create Docker images and optionally publish them to a Docker Registry.

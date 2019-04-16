@@ -1,5 +1,7 @@
 # Features
 
+@@include[deprecation.md](deprecation.md)
+
 @@ toc { depth=1 }
 
 @@@ index

@@ -1,5 +1,7 @@
 # Overview
 
+@@include[deprecation.md](deprecation.md)
+
 Lightbend Orchestration is a developer-centric suite of tools that helps you deploy [Reactive Platform](https://www.lightbend.com/products/reactive-platform) applications to Kubernetes and DC/OS. It provides an easy way to create Docker images for your applications and introduces an automated process for generating Kubernetes and DC/OS resource and configuration files for you from those images. This process helps reduce the friction between development and operations.
 
 ## Components
@@ -44,9 +46,5 @@ health and readiness checks on top of the provided ones.
 <link rel="stylesheet" type="text/css" href="css/custom.css">
 
 ## Target platforms
-
-@@@ note
-Integration with both Kubernetes and DC/OS is **Incubating** at this point.
-@@@
 
 The tooling helps you leverage these features on Kubernetes and DC/OS (via Marathon).

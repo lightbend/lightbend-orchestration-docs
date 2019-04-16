@@ -1,5 +1,7 @@
 ## Docker and JVM Configuration
 
+@@include[deprecation.md](deprecation.md)
+
 The Docker image is the deployment unit of choice and powers a wide variety of orchestration systems, including Kubernetes and DC/OS. The docker images created by Lightbend Orchestration offer the following default configuration:
 
 1. Minimal base-image, `openjdk:alpine`, to reduce the size of the images produced.

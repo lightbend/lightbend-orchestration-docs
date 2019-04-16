@@ -1,5 +1,7 @@
 ## Endpoint Detection and Declaration
 
+@@include[deprecation.md](deprecation.md)
+
 An endpoint defines how your application communicates with other services and the outside world. Endpoints have a name and optionally an ingress declaration. Ingress defines how your application should be accessible from outside of the cluster, whether that be via path-based routing, virtual hosts, or simply by load balancer ports.
 
 ### Project
@@ -23,17 +25,9 @@ For Lagom applications, an endpoint, `http` is automatically declared for each m
 
 ### Kubernetes
 
-@@@ note
-Integration with Kubernetes except for Minikube is **Incubating** at this point.
-@@@
-
 When generating configuration for Kubernetes using the `rp` tool, [Service](https://kubernetes.io/docs/concepts/services-networking/service/) declarations are created for each endpoint. Additionally, if any ingress settings are defined for the endpoint, the appropriate [Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/) resources will be created and configured to point at the appropriate service.
 
 
 ### DC/OS
-
-@@@ note
-Integration with DC/OS is **Incubating** at this point.
-@@@
 
 When generating configuration for DC/OS using the `rp` tool, [Marathon Port Definitions](https://mesosphere.github.io/marathon/docs/ports.html) are generated for each microservice. Additionally, if any ingress settings are defined for the endpoint, the appropriate [Marathon-lb](https://github.com/mesosphere/marathon-lb) configuration is defined.

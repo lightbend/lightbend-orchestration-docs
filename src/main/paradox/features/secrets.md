@@ -1,6 +1,9 @@
 ## Secrets
 
+@@include[deprecation.md](deprecation.md)
+
 A non-blocking secrets API is available for Kubernetes. The secrets must be declared in the `build.sbt` file, and then they can be accessed at runtime using the provided libraries.
+
 #### Project
 
 For example, given the following `build.sbt` setting:
@@ -15,10 +18,6 @@ is transformed to lowercase, and `-` for non-alphanum instead.
 #### Kubernetes
 
 <link rel="stylesheet" type="text/css" href="../css/custom.css">
-
-@@@ note
-Integration with Kubernetes except for Minikube is **Incubating** at this point.
-@@@
 
 An operator can declare this secret before generating the deployment resources:
 

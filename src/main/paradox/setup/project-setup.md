@@ -1,6 +1,6 @@
 # Project Setup
 
-Currently, [sbt](http://www.scala-sbt.org/) is the only supported build tool. Maven support is planned and will land in a future release.
+@@include[deprecation.md](deprecation.md)
 
 ## sbt
 

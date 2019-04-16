@@ -2,9 +2,7 @@
 
 <link rel="stylesheet" type="text/css" href="../css/custom.css">
 
-@@@ note
-Integration with all deployment targets except for Minikube is **Incubating** at this point.
-@@@
+@@include[deprecation.md](deprecation.md)
 
 [Akka Cluster Bootstrap][akka-cluster-bootstrap] is an extension module to Akka that allows an Akka Cluster to (semi) automatically discover its neighbouring nodes, and join the existing cluster, or safely form a new cluster for discovered nodes.
 
