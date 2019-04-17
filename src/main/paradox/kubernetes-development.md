@@ -1,5 +1,7 @@
 # Kubernetes Development
 
+@@include[deprecation.md](deprecation.md)
+
 [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app) includes an sbt task, `rpDeploy minikube`, that can be
 used to simplify running your application in your local Minikube. This is especially useful as a development tool
 to get a quick feedback on modifications as you develop your applications.

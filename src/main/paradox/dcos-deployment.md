@@ -2,9 +2,7 @@
 
 <link rel="stylesheet" type="text/css" href="css/custom.css">
 
-@@@ note
-Integration with DC/OS is **Incubating** at this point.
-@@@
+@@include[deprecation.md](deprecation.md)
 
 Once you've installed the deployment tool, `reactive-cli`, you can use the `rp` program it provides to generate DC/OS (Marathon) resources. These will then need to be supplied to `dcos` to complete the deployment.
 

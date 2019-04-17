@@ -1,5 +1,7 @@
 ## Additional Applications and Jobs
 
+@@include[deprecation.md](deprecation.md)
+
 You can declare additional *applications* inside your Docker image. An application is a name and a sequence of arguments
 that should be executed for the application. An operator can then generate alternative resources using `rp` by simply
 declaring the application name.

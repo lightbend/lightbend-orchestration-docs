@@ -1,5 +1,7 @@
 # Examples
 
+@@include[deprecation.md](deprecation.md)
+
 We've prepared sample applications using Lightbend Orchestration to serve as a reference. Refer to the list below for more details.
 
 ### Hello World

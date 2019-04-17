@@ -1,5 +1,7 @@
 # Getting started
 
+@@include[deprecation.md](deprecation.md)
+
 The main components of Lightbend Orchestration need to be installed, or integrated into your build.
 
 ## reactive-cli: rp

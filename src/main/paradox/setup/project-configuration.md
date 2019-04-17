@@ -1,5 +1,7 @@
 # Project Configuration
 
+@@include[deprecation.md](deprecation.md)
+
 The sbt plugin, [sbt-reactive-app](https://github.com/lightbend/sbt-reactive-app), inspects the project it is included
 in to provide a set of reasonable defaults and reduce the amount of configuration required to a bare minimum. Refer to
 the sections below to understand what features are available, which are automatically enabled, and when manual configuration is required.

@@ -1,5 +1,7 @@
 # CLI Installation
 
+@@include[deprecation.md](deprecation.md)
+
 Deployment of your application requires the usage of a CLI tool, `rp`, provided by [`reactive-cli`](https://github.com/lightbend/reactive-cli). Typically, you'll want to install this on the same machine that you use `kubectl` or `dcos` from. A bastion host is recommended for production usage, but for local development this can be done on your own machine.
 
 ## Install the CLI

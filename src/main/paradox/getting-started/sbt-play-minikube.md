@@ -1,5 +1,7 @@
 # sbt Example: Play on Minikube
 
+@@include[deprecation.md](deprecation.md)
+
 ### Prerequisites
 
 * [reactive-cli](../setup/cli-installation.html) installed

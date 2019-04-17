@@ -1,5 +1,7 @@
 # Release Notes
 
+@@include[deprecation.md](deprecation.md)
+
 This page tracks the components of Lightbend Orchestration. Note that `reactive-lib` is automatically included by `sbt-reactive-app`, so you do not normally
 need to specify its version. However, a particular version can be used by explicitly setting the `reactiveLibVersion`
 sbt setting.
