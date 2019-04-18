@@ -23,7 +23,7 @@ The configuration below shows how you can define a health check that causes your
 # In application.conf -- if adding a readiness check,
 # add to the `readiness-checks` key instead.
 
-com.lightbend.platform-tooling.health-checks +=
+com.lightbend.platform-tooling.status.health-checks +=
   "com.mycompany.MyAppHealthCheck"
 ```
 
