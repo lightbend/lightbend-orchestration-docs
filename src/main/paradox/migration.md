@@ -37,10 +37,11 @@ Other features, including generation of Kubernetes and Marathon configuration fi
 
 ## List of deprecated components
 
-Lightbend Orchestration consisted of three main components, all of which are now deprecated:
+Lightbend Orchestration consisted of these components, all of which are now deprecated:
 
 - sbt-reactive-app --- sbt plugin
 - reactive-cli --- rp command-line tool
 - reactive-lib --- runtime library, automatically added as a dependency by sbt-reactive-app
+- reactive-sandbox --- Helm charts for installing Cassandra, Elasticsearch, Kafka and ZooKeeper
 
 We at Lightbend thank all of you who tested and provided feedback on Lightbend Orchestration. We will be happy to provide support to Lightbend Platform subscribers who would like assistance with the migration to our new recommended approach --- please [contact Lightbend Support](https://support.lightbend.com/customer/portal/emails/new) with any questions or feedback. We also invite community users to ask questions and give us feedback on the public [Lightbend Discourse forums](https://discuss.lightbend.com/).
