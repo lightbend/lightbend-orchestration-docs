@@ -11,7 +11,12 @@ Many of the features that were originally [Incubating](https://developer.lightbe
 
 Service Discovery is now provided by the new [Akka Discovery](https://doc.akka.io/docs/akka/current/discovery/) API. Most Kubernetes and Marathon users should configure the [DNS Discovery Method](https://doc.akka.io/docs/akka/current/discovery/#discovery-method-dns) as the default service discovery implementation, to make use of each platform's native support for DNS SRV with a custom, high-performance, asynchronous DNS implementation. Those needing manual configuration can use the [Configuration Discovery Method](https://doc.akka.io/docs/akka/current/discovery/#discovery-method-configuration), and both can be used together by configuring the [Aggregate Discovery Method](https://doc.akka.io/docs/akka/current/discovery/#discovery-method-aggregate-multiple-discovery-methods).
 
-Akka Discovery is available to all users of Akka 2.5.19 or later, including users of Play or Lagom. Lagom users can use the [Lagom Akka Discovery ServiceLocator](https://github.com/lagom/lagom-akka-discovery-service-locator) project for seamless integration. It is compatible with Lagom 1.4 and 1.5.
+Akka Discovery is available to all users of Akka 2.5.19 or later, including users of Play or Lagom. Lagom users can use the Lagom Akka Discovery ServiceLocator project for seamless integration. It is available in Lagom 1.4 and 1.5. For more information, consult the corresponding documentation for Akka Discovery integration:
+ 
+ * [Java API Lagom 1.4](https://www.lagomframework.com/documentation/1.4.x/java/AkkaDiscoveryIntegration.html)
+ * [Scala API Lagom 1.4](https://www.lagomframework.com/documentation/1.4.x/scala/AkkaDiscoveryIntegration.html)
+ * [Java API Lagom 1.5](https://www.lagomframework.com/documentation/1.5.x/java/AkkaDiscoveryIntegration.html)
+ * [Scala API Lagom 1.5](https://www.lagomframework.com/documentation/1.5.x/scala/AkkaDiscoveryIntegration.html)
 
 ## Cluster Bootstrap
 
