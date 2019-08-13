@@ -4,7 +4,7 @@ This project contains the documentation for Lightbend Orchestration. This is a [
 
 ## Project Status
 
-Lightbend Orchestration is no longer actively developed and will reach its [End of Life](https://developer.lightbend.com/docs/lightbend-platform/2.0/support-terminology/index.html#end-of-life-eol-) on April 15, 2020.
+Lightbend Orchestration is no longer actively developed and will reach its [End of Life](https://developer.lightbend.com/docs/lightbend-platform/introduction/getting-help/support-terminology.html#eol) on April 15, 2020.
 
 We recommend [Migrating to the Improved Kubernetes Deployment Experience](https://developer.lightbend.com/docs/lightbend-orchestration/current/migration.html).
 
